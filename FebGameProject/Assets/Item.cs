@@ -8,5 +8,7 @@ public class Item : ScriptableObject
     public new string name;
     public string desc;
     public int damage;
+    public int defence;
     public Sprite itemSprite;
+    public GameObject projectile;
 }

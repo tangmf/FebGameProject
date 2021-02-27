@@ -1,15 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthManager : MonoBehaviour
 {
     public GameObject entity;
     public int healthPoints = 100;
+    public Text healthText;
     // Start is called before the first frame update
     void Start()
     {
-        
+        healthText.text = healthPoints.ToString();
     }
 
     void Update()
@@ -30,7 +32,12 @@ public class HealthManager : MonoBehaviour
         if(healthPoints <= 0)
         {
             healthPoints = 0;
+            healthText.text = healthPoints.ToString();
             Die();
+        }
+        else
+        {
+            healthText.text = healthPoints.ToString();
         }
     }
 

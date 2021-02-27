@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ea4e416af5047e4fbf026e64e3722e6, type: 3}
-  m_Name: Wooden Sword
+  m_Name: Shield
   m_EditorClassIdentifier: 
-  name: Wooden Sword
-  desc: it sucks
-  damage: 10
-  defence: 1
-  itemSprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  name: Shield
+  desc: Protect!
+  damage: 2
+  defence: 10
+  itemSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
