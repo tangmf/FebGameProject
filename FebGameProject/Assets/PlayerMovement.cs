@@ -9,10 +9,15 @@ public class PlayerMovement : MonoBehaviour
     public bool isGrounded = false;
     Rigidbody2D rb2d;
 
+    Animator animator;
+    SpriteRenderer spriteRenderer;
+
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -36,7 +41,17 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey("w") && isGrounded)
         {
             rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
+  
         }
+        if (isGrounded == false)
+        {
+            animator.SetBool("Jump", true);
+        }
+        else
+        {
+            animator.SetBool("Jump", false);
+        }
+
     }
 
 
