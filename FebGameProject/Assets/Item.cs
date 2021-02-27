@@ -10,5 +10,5 @@ public class Item : ScriptableObject
     public int damage;
     public int defence;
     public Sprite itemSprite;
-    public GameObject projectile;
+    public GameObject droppedItem;
 }
