@@ -17,3 +17,5 @@ MonoBehaviour:
   damage: 2
   defence: 10
   itemSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  droppedItem: {fileID: 3919512440443937417, guid: 15a426d0dc7721c439b25608dd6bbea4,
+    type: 3}

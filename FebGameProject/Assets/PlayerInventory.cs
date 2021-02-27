@@ -14,10 +14,13 @@ public class PlayerInventory : MonoBehaviour
     public Transform attackPos;
     public float attackRange;
     public int damage;
+
+    public int maxSlots = 1;
+    public GameObject inventoryUI;
     // Start is called before the first frame update
     void Start()
     {
-        
+        inventoryUI.SetActive(false);
     }
 
     // Update is called once per frame
@@ -57,6 +60,22 @@ public class PlayerInventory : MonoBehaviour
         {
             DropCurrentItem();
         }
+
+        if (Input.GetKeyDown("i"))
+        {
+            if(inventoryUI.activeSelf)
+            {
+                inventoryUI.SetActive(false);
+                Debug.Log("Inventory closed");
+            }
+            else
+            {
+                inventoryUI.SetActive(true);
+                Debug.Log("Inventory opened");
+            }
+            
+            
+        }
     }
 
     public void AddItem(Item item)
@@ -90,5 +109,10 @@ public class PlayerInventory : MonoBehaviour
         Instantiate(currentItem.droppedItem, handPos.position, handPos.rotation);
         currentItem = null;
         spriteRenderer.sprite = null;
+    }
+
+    public void CloseInventory()
+    {
+        inventoryUI.SetActive(false);
     }
 }

@@ -17,4 +17,4 @@ MonoBehaviour:
   damage: 0
   defence: 0
   itemSprite: {fileID: 0}
-  projectile: {fileID: 0}
+  droppedItem: {fileID: 0}

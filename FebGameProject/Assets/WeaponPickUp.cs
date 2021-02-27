@@ -25,11 +25,20 @@ public class WeaponPickUp : MonoBehaviour
             PlayerInventory playerInventory = hitInfo.GetComponent<PlayerInventory>();
             if (playerInventory != null)
             {
-                Debug.Log(item.name + " Picked up");
-                playerInventory.AddItem(item);
+                if(playerInventory.itemList.Count < playerInventory.maxSlots)
+                {
+                    Destroy(gameObject);
+                    Debug.Log(item.name + " Picked up");
+                    playerInventory.AddItem(item);
+                }
+                else
+                {
+                    Debug.Log("Inventory full");
+                }
+                
 
             }
-            Destroy(gameObject);
+            
         }
     }
 
