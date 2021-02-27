@@ -22,10 +22,12 @@ public class WeaponPickUp : MonoBehaviour
     {
         if (hitInfo.gameObject.CompareTag("Player"))
         {
-            HealthManager player = hitInfo.GetComponent<HealthManager>();
-            if (player != null)
+            PlayerInventory playerInventory = hitInfo.GetComponent<PlayerInventory>();
+            if (playerInventory != null)
             {
                 Debug.Log(item.name + " Picked up");
+                playerInventory.AddItem(item);
+
             }
             Destroy(gameObject);
         }
