@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerInventory : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class PlayerInventory : MonoBehaviour
 
     public int maxSlots = 1;
     public GameObject inventoryUI;
+    public Text inventoryList;
     // Start is called before the first frame update
     void Start()
     {
@@ -59,6 +61,7 @@ public class PlayerInventory : MonoBehaviour
         if (Input.GetKey("q") && currentItem != null)
         {
             DropCurrentItem();
+            UpdateInventoryList();
         }
 
         if (Input.GetKeyDown("i"))
@@ -83,6 +86,7 @@ public class PlayerInventory : MonoBehaviour
         itemList.Add(item);
         currentItem = item;
         UpdateCurrentItemSprite();
+        UpdateInventoryList();
     }
 
     public void ListAllItems()
@@ -109,10 +113,21 @@ public class PlayerInventory : MonoBehaviour
         Instantiate(currentItem.droppedItem, handPos.position, handPos.rotation);
         currentItem = null;
         spriteRenderer.sprite = null;
+        UpdateInventoryList();
+
     }
 
     public void CloseInventory()
     {
         inventoryUI.SetActive(false);
+    }
+
+    public void UpdateInventoryList()
+    {
+        inventoryList.text = "";
+        foreach (Item i in itemList)
+        {
+            inventoryList.text = inventoryList.text + i.name;
+        }
     }
 }
