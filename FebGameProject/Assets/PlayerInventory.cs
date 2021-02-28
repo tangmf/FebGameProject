@@ -14,15 +14,20 @@ public class PlayerInventory : MonoBehaviour
     public float period = 0.1f;
     public Transform attackPos;
     public float attackRange;
-    public int damage;
 
-    public int maxSlots = 1;
+    public int maxSlots = 2;
     public GameObject inventoryUI;
     public Text inventoryList;
+    public Text inventoryDesc;
+    public Image inventoryItemSprite;
+    public Text inventoryItemAtk;
+    public Text inventoryItemDef;
+    public HealthManager healthManager;
     // Start is called before the first frame update
     void Start()
     {
         inventoryUI.SetActive(false);
+        HealthManager stats = healthManager.GetComponent<HealthManager>();
     }
 
     // Update is called once per frame
@@ -46,7 +51,7 @@ public class PlayerInventory : MonoBehaviour
                 nextActionTime += period;
             }
         }
-
+        /*
         if (Input.GetKey("1"))
         {
             SwapWeapon(0);
@@ -57,7 +62,7 @@ public class PlayerInventory : MonoBehaviour
             SwapWeapon(1);
             UpdateCurrentItemSprite();
         }
-
+        */
         if (Input.GetKey("q") && currentItem != null)
         {
             DropCurrentItem();
@@ -83,8 +88,11 @@ public class PlayerInventory : MonoBehaviour
 
     public void AddItem(Item item)
     {
+        HealthManager stats = healthManager.GetComponent<HealthManager>();
         itemList.Add(item);
         currentItem = item;
+        stats.defence += item.defence;
+        stats.damage += item.damage;
         UpdateCurrentItemSprite();
         UpdateInventoryList();
     }
@@ -96,12 +104,12 @@ public class PlayerInventory : MonoBehaviour
             Debug.Log(i.name);
         }
     }
-
+    /*
     public void SwapWeapon(int i)
     {
         currentItem = itemList[i];
     }
-
+    */
     public void UpdateCurrentItemSprite()
     {
         spriteRenderer.sprite = currentItem.itemSprite;
@@ -109,8 +117,15 @@ public class PlayerInventory : MonoBehaviour
 
     public void DropCurrentItem()
     {
+        HealthManager stats = healthManager.GetComponent<HealthManager>();
         itemList.Remove(currentItem);
+        inventoryItemSprite.sprite = null;
+        inventoryDesc.text = null;
+        inventoryItemAtk.text = null;
+        inventoryItemDef.text = null;
         Instantiate(currentItem.droppedItem, handPos.position, handPos.rotation);
+        stats.defence -= currentItem.defence;
+        stats.damage -= currentItem.damage;
         currentItem = null;
         spriteRenderer.sprite = null;
         UpdateInventoryList();
@@ -125,9 +140,17 @@ public class PlayerInventory : MonoBehaviour
     public void UpdateInventoryList()
     {
         inventoryList.text = "";
+        /*
         foreach (Item i in itemList)
         {
             inventoryList.text = inventoryList.text + i.name;
         }
+        */
+        inventoryList.text = currentItem.name;
+        inventoryItemSprite.sprite = currentItem.itemSprite;
+        inventoryDesc.text = currentItem.desc;
+        inventoryItemDef.text = "+ " + currentItem.defence + " defence";
+        inventoryItemAtk.text = "+ " + currentItem.damage + " damage";
     }
+
 }
