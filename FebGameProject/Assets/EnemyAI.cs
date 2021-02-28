@@ -8,6 +8,8 @@ public class EnemyAI : MonoBehaviour
     SpriteRenderer spriteRenderer;
     Rigidbody2D rb2d;
     public bool playerDetect = false;
+    public int healthPoints = 100;
+    public GameObject entity;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +37,22 @@ public class EnemyAI : MonoBehaviour
     {
         animator.SetBool("PlayerDetect", false);
         playerDetect = false;
+    }
+    public void TakeDamage(int damage)
+    {
+        healthPoints -= damage;
+        if (healthPoints <= 0)
+        {
+            healthPoints = 0;
+            Die();
+        }
+
+    }
+
+    public void Die()
+    {
+        Destroy(entity);
+        Debug.Log(entity.ToString() + " has been killed");
     }
 
 }

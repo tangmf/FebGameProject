@@ -35,20 +35,23 @@ public class PlayerInventory : MonoBehaviour
     {
         if (Time.time > nextActionTime)
         {
-            if (Input.GetKey(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
 
                 if (itemList.Count == 0)
                 {
+                    nextActionTime += period;
                     Debug.Log("no weapon");
                 }
                 else
                 {
-
+                    nextActionTime += period;
                     Debug.Log("Player attacked using " + currentItem.name);
+                    GameObject newBullet = (GameObject)Instantiate(currentItem.bullet, attackPos.position, attackPos.rotation);
+                    Destroy(newBullet, 2f);
                 }
 
-                nextActionTime += period;
+                
             }
         }
         /*
