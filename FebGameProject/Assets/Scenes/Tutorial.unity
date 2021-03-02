@@ -233,6 +233,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   damage: 40
+  hurtPlayer: 1
 --- !u!61 &99070063
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -773,6 +774,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   damage: 40
+  hurtPlayer: 1
 --- !u!61 &438246414
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1078,10 +1080,14 @@ MonoBehaviour:
   period: 1
   attackPos: {fileID: 1461527272}
   attackRange: 0
-  damage: 0
   maxSlots: 1
   inventoryUI: {fileID: 1087111695}
   inventoryList: {fileID: 293167913}
+  inventoryDesc: {fileID: 0}
+  inventoryItemSprite: {fileID: 0}
+  inventoryItemAtk: {fileID: 0}
+  inventoryItemDef: {fileID: 0}
+  healthManager: {fileID: 0}
 --- !u!4 &597883138
 Transform:
   m_ObjectHideFlags: 0
@@ -1136,7 +1142,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entity: {fileID: 1906977783}
   healthPoints: 100
+  defence: 10
+  damage: 10
   healthText: {fileID: 2140489603}
+  period: 0.1
+  attackPos: {fileID: 0}
+  attackRange: 0
+  playerInventory: {fileID: 0}
+  items: []
 --- !u!1 &667845767
 GameObject:
   m_ObjectHideFlags: 0
@@ -2413,6 +2426,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   damage: 40
+  hurtPlayer: 1
 --- !u!61 &1743457631
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2623,6 +2637,7 @@ GameObject:
   - component: {fileID: 1906977787}
   - component: {fileID: 1906977786}
   - component: {fileID: 1906977785}
+  - component: {fileID: 1906977788}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2733,6 +2748,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1906977788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906977783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94821c865fc77f0418b453399806776d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firepoint: {fileID: 1461527272}
+  firespell: {fileID: 5982856773817540410, guid: 3e4eeb82f4cb13f40acb9fe17cdd7f3d,
+    type: 3}
+  icespell: {fileID: 3052810937958002803, guid: 7a91b05f19b469d458dfe83507acc74b,
+    type: 3}
 --- !u!1 &1954383953 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6776112695064740443, guid: d11cc9724bd5f204da3b4f53c9cfc9ba,
@@ -2753,7 +2785,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entity: {fileID: 1954383953}
   healthPoints: 100
+  defence: 10
+  damage: 10
   healthText: {fileID: 0}
+  period: 0.1
+  attackPos: {fileID: 0}
+  attackRange: 0
+  playerInventory: {fileID: 0}
+  items: []
 --- !u!114 &1954383955
 MonoBehaviour:
   m_ObjectHideFlags: 0
