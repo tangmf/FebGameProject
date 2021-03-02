@@ -9,6 +9,8 @@ public class EnemyAI : MonoBehaviour
     Rigidbody2D rb2d;
     public bool playerDetect = false;
     public int healthPoints = 100;
+    public int damage = 20;
+    public int defence = 10;
     public GameObject entity;
     // Start is called before the first frame update
     void Start()

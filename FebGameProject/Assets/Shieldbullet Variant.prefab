@@ -17,6 +17,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shieldbullet Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 2120708278466423163, guid: c96b6e9f02b05584aa6be453bd7362ab,
+        type: 3}
+      propertyPath: m_Mass
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 3537007366590153130, guid: c96b6e9f02b05584aa6be453bd7362ab,
         type: 3}
       propertyPath: m_Sprite
