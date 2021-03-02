@@ -20,11 +20,11 @@ public class EnemyAI : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+    // // Update is called once per frame
+    // void Update()
+    // {
 
-    }
+    // }
 
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
@@ -32,7 +32,6 @@ public class EnemyAI : MonoBehaviour
         playerDetect = true;
         FollowPlayer targetPlayer = this.GetComponent<FollowPlayer>();
         targetPlayer.TargetPlayer();
-        
     }
 
     void OnTriggerExit2D(Collider2D hitInfo)
@@ -40,6 +39,7 @@ public class EnemyAI : MonoBehaviour
         animator.SetBool("PlayerDetect", false);
         playerDetect = false;
     }
+
     public void TakeDamage(int damage)
     {
         healthPoints -= damage;
