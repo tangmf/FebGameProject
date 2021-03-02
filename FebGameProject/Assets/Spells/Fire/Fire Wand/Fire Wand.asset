@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ea4e416af5047e4fbf026e64e3722e6, type: 3}
+  m_Name: Fire Wand
+  m_EditorClassIdentifier: 
+  name: Fire Wand
+  desc: Blast your foes with a fireball!
+  damage: 10
+  defence: 0
+  itemSprite: {fileID: 21300000, guid: 867638d991d5b2a44940fda3f89295a3, type: 3}
+  droppedItem: {fileID: 4983338572268173599, guid: 0b972551a9bd4384fbc085e2c9c28ada,
+    type: 3}
+  bullet: {fileID: 5982856773817540410, guid: 3e4eeb82f4cb13f40acb9fe17cdd7f3d, type: 3}

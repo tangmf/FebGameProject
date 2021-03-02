@@ -127,7 +127,6 @@ GameObject:
   - component: {fileID: 3580101861664594037}
   - component: {fileID: 3580101861664594038}
   - component: {fileID: 967000649901873965}
-  - component: {fileID: 4321828895600390802}
   - component: {fileID: 8600659192665479044}
   m_Layer: 0
   m_Name: Kiddy
@@ -237,23 +236,6 @@ MonoBehaviour:
   Speed: 1
   jumpForce: 3
   isGrounded: 0
---- !u!114 &4321828895600390802
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3580101861664594039}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94821c865fc77f0418b453399806776d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firepoint: {fileID: 948994310894128539}
-  firespell: {fileID: 5982856773817540410, guid: 3e4eeb82f4cb13f40acb9fe17cdd7f3d,
-    type: 3}
-  icespell: {fileID: 3052810937958002803, guid: 7a91b05f19b469d458dfe83507acc74b,
-    type: 3}
 --- !u!50 &8600659192665479044
 Rigidbody2D:
   serializedVersion: 4

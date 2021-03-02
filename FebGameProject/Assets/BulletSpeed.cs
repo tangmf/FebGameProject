@@ -12,9 +12,9 @@ public class BulletSpeed : MonoBehaviour
         rb.velocity = transform.right * speed;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+    // // Update is called once per frame
+    // void Update()
+    // {
         
-    }
+    // }
 }
