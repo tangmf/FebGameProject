@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 3052810937958002804}
   - component: {fileID: 3052810937958002805}
   - component: {fileID: 3052810937958002802}
-  - component: {fileID: 3052810937958002697}
   - component: {fileID: 3052810937958002806}
   - component: {fileID: 3052810937958002807}
+  - component: {fileID: 957671443992361287}
   m_Layer: 0
   m_Name: SpellIce
   m_TagString: Untagged
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 3052810937958002803}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.172, y: -0.532, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -104,22 +104,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &3052810937958002697
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3052810937958002803}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34fad8773116def4f86fb78b4c928d3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 20
-  rb: {fileID: 3052810937958002806}
-  animator: {fileID: 3052810937958002802}
-  collideAnimationName: CollideIce
 --- !u!50 &3052810937958002806
 Rigidbody2D:
   serializedVersion: 4
@@ -157,3 +141,19 @@ CapsuleCollider2D:
   m_Offset: {x: 0.37, y: 0}
   m_Size: {x: 2.1657987, y: 0.42212588}
   m_Direction: 1
+--- !u!114 &957671443992361287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3052810937958002803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34fad8773116def4f86fb78b4c928d3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 20
+  rb: {fileID: 3052810937958002806}
+  animator: {fileID: 3052810937958002802}
+  collideAnimationName: CollideIce
