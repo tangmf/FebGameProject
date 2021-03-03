@@ -42,15 +42,17 @@ public class PlayerInventory : MonoBehaviour
 
                 if (itemList.Count == 0)
                 {
-                    nextActionTime += period;
+                    
                     Debug.Log("no weapon");
+                    nextActionTime += period;
                 }
                 else
                 {
-                    nextActionTime += period;
+                    
                     Debug.Log("Player attacked using " + currentItem.name);
                     GameObject newBullet = (GameObject)Instantiate(currentItem.bullet, attackPos.position, attackPos.rotation);
                     Destroy(newBullet, 2f);
+                    nextActionTime += period;
                 }
 
                 
