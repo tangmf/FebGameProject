@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEditor.Animations;
 
 public class PlayerInventory : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class PlayerInventory : MonoBehaviour
     public Text inventoryItemAtk;
     public Text inventoryItemDef;
     public HealthManager healthManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -150,7 +152,6 @@ public class PlayerInventory : MonoBehaviour
         }
         */
         inventoryList.text = currentItem.name;
-        inventoryItemSprite.sprite = currentItem.itemSprite;
         inventoryDesc.text = currentItem.desc;
         inventoryItemDef.text = "+ " + currentItem.defence + " defence";
         inventoryItemAtk.text = "+ " + currentItem.damage + " damage";

@@ -20,3 +20,4 @@ MonoBehaviour:
   droppedItem: {fileID: 4983338572268173599, guid: 0b972551a9bd4384fbc085e2c9c28ada,
     type: 3}
   bullet: {fileID: 5982856773817540410, guid: 3e4eeb82f4cb13f40acb9fe17cdd7f3d, type: 3}
+  animator: {fileID: 9100000, guid: 9b98a2ab939c8884d9a5797e90c3f7d4, type: 2}

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9d6bb560a4a595c44ab67124c38e0565
+guid: a80f7f04a67275249bd47860ac15ea74
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -87,18 +87,18 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   mosaicSpriteImportData: []
   rigSpriteImportData:
-  - name: hat outline
+  - name: face
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 209
-      y: 4
-      width: 223
-      height: 147
-    spriteID: 3a86fc65d8601704d9427621d1833ece
+      x: 4
+      y: 240
+      width: 102
+      height: 26
+    spriteID: 5d234f7f526a6ba43afd3c10e10cea74
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -108,19 +108,19 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 200, y: -123}
-  - name: hat white
+    uvTransform: {x: -152, y: 61}
+  - name: Head
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 126
-      y: 418
-      width: 0
-      height: 0
-    spriteID: f1e91bf6585811549a2313100e7f17b5
+      x: 4
+      y: 124
+      width: 183
+      height: 108
+    spriteID: 914df4bc3443edb4cafd18f15af6dd46
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -130,8 +130,8 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -174, y: 118}
-  - name: body outline
+    uvTransform: {x: -93, y: -6}
+  - name: Body
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -140,9 +140,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 197
-      height: 209
-    spriteID: 8788814e68124944a8ace387e8542fdf
+      width: 203
+      height: 112
+    spriteID: cbd5c80dd052c194391e196ecda8b2cf
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -152,19 +152,19 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -86, y: -20}
-  - name: body white
+    uvTransform: {x: -86, y: -32}
+  - name: Right Leg
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 221
-      width: 192
-      height: 189
-    spriteID: befa81472c764f14aa7db5d361b057a4
+      x: 195
+      y: 124
+      width: 41
+      height: 34
+    spriteID: 265cda1618a0868499fe274a7c5b1db2
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -174,19 +174,19 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -89, y: 179}
-  - name: legs outline
+    uvTransform: {x: 62, y: 104}
+  - name: Left Leg
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 418
-      width: 114
-      height: 41
-    spriteID: 5fa21ef7a18d7f74eb82e62b998f7035
+      x: 195
+      y: 166
+      width: 41
+      height: 34
+    spriteID: 4360aa102c510c248ae0f1c1461964f9
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -196,125 +196,68 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -139, y: 409}
-  - name: legs white
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 467
-      width: 112
-      height: 40
-    spriteID: 0d766e94bec02314bb90486d5ec2c7aa
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: -140, y: 456}
+    uvTransform: {x: -22, y: 144}
   platformSettings: []
   mosaicLayers: 1
   documentPivot: {x: 0, y: 0}
   documentAlignment: 7
   importHiddenLayers: 0
-  importedTextureWidth: 512
+  importedTextureWidth: 256
   importedTextureHeight: 512
   documentSize: {x: 300, y: 300}
   paperDollMode: 0
   keepDupilcateSpriteName: 0
   spriteCategoryList:
     categories: []
-  textureActualWidth: 512
+  textureActualWidth: 256
   textureActualHeight: 512
   spritePackingTag: 
   resliceFromLayer: 0
   characterMode: 1
   mosaicPSDLayers: []
   rigPSDLayers:
-  - name: cloak
+  - name: Real
     spriteName: 
     isGroup: 1
     parentIndex: -1
     spriteID: 
-    layerID: 33
+    layerID: 25
     mosaicPosition: {x: 0, y: 0}
-  - name: hat
-    spriteName: 
-    isGroup: 1
-    parentIndex: -1
-    spriteID: 
-    layerID: 31
-    mosaicPosition: {x: 0, y: 0}
-  - name: hat outline
-    spriteName: hat outline
+  - name: face
+    spriteName: face
     isGroup: 0
-    parentIndex: 1
-    spriteID: 3a86fc65d8601704d9427621d1833ece
+    parentIndex: 0
+    spriteID: 5d234f7f526a6ba43afd3c10e10cea74
+    layerID: 65
+    mosaicPosition: {x: 4, y: 240}
+  - name: Head
+    spriteName: Head
+    isGroup: 0
+    parentIndex: 0
+    spriteID: 914df4bc3443edb4cafd18f15af6dd46
+    layerID: 19
+    mosaicPosition: {x: 4, y: 124}
+  - name: Body
+    spriteName: Body
+    isGroup: 0
+    parentIndex: 0
+    spriteID: cbd5c80dd052c194391e196ecda8b2cf
     layerID: 30
-    mosaicPosition: {x: 209, y: 4}
-  - name: hat white
-    spriteName: hat white
-    isGroup: 0
-    parentIndex: 1
-    spriteID: f1e91bf6585811549a2313100e7f17b5
-    layerID: 6
-    mosaicPosition: {x: 126, y: 418}
-  - name: body
-    spriteName: 
-    isGroup: 1
-    parentIndex: -1
-    spriteID: 
-    layerID: 27
-    mosaicPosition: {x: 0, y: 0}
-  - name: body
-    spriteName: 
-    isGroup: 1
-    parentIndex: 4
-    spriteID: 
-    layerID: 13
-    mosaicPosition: {x: 0, y: 0}
-  - name: body outline
-    spriteName: body outline
-    isGroup: 0
-    parentIndex: 5
-    spriteID: 8788814e68124944a8ace387e8542fdf
-    layerID: 34
     mosaicPosition: {x: 4, y: 4}
-  - name: body white
-    spriteName: body white
+  - name: Right Leg
+    spriteName: Right Leg
     isGroup: 0
-    parentIndex: 5
-    spriteID: befa81472c764f14aa7db5d361b057a4
-    layerID: 7
-    mosaicPosition: {x: 4, y: 221}
-  - name: legs
-    spriteName: 
-    isGroup: 1
-    parentIndex: 4
-    spriteID: 
-    layerID: 11
-    mosaicPosition: {x: 0, y: 0}
-  - name: legs outline
-    spriteName: legs outline
+    parentIndex: 0
+    spriteID: 265cda1618a0868499fe274a7c5b1db2
+    layerID: 40
+    mosaicPosition: {x: 195, y: 124}
+  - name: Left Leg
+    spriteName: Left Leg
     isGroup: 0
-    parentIndex: 8
-    spriteID: 5fa21ef7a18d7f74eb82e62b998f7035
-    layerID: 26
-    mosaicPosition: {x: 4, y: 418}
-  - name: legs white
-    spriteName: legs white
-    isGroup: 0
-    parentIndex: 8
-    spriteID: 0d766e94bec02314bb90486d5ec2c7aa
-    layerID: 10
-    mosaicPosition: {x: 4, y: 467}
+    parentIndex: 0
+    spriteID: 4360aa102c510c248ae0f1c1461964f9
+    layerID: 44
+    mosaicPosition: {x: 195, y: 166}
   characterData:
     bones: []
     parts: []
