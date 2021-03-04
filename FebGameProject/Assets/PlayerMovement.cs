@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private GameMaster gm;
     public float Speed = 5f;
     public int jumpForce = 10;
     public bool isGrounded = false;
@@ -18,6 +19,9 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameMaster>();
+        transform.position = gm.lastCheckPointPos;
     }
 
     // Update is called once per frame
@@ -52,6 +56,12 @@ public class PlayerMovement : MonoBehaviour
 
         bool Shoot = Input.GetKey(KeyCode.Space);
         animator.SetBool("Shoot", Shoot);
+
+        if (Input.GetKeyDown("r"))
+        {
+            transform.position = gm.lastCheckPointPos;
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
 
 
     }

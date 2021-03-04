@@ -77,4 +77,14 @@ public class HealthManager : MonoBehaviour
         Debug.Log(entity.ToString() + " has been killed");
     }
 
+    public void Heal(int healAmt)
+    {
+        healthPoints += healAmt;
+        if(healthPoints > 100)
+        {
+            healthPoints = 100;
+        }
+        healthText.text = healthPoints.ToString();
+    }
+
 }
