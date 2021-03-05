@@ -17,3 +17,4 @@ MonoBehaviour:
   skillIcon: {fileID: 21300000, guid: 41727157ccd99114dbb9a3ad3fa7b815, type: 3}
   skillBullet: {fileID: 5982856773817540410, guid: 3e4eeb82f4cb13f40acb9fe17cdd7f3d,
     type: 3}
+  cooldown: 1

@@ -9,4 +9,5 @@ public class Skills : ScriptableObject
     public string desc;
     public Sprite skillIcon;
     public GameObject skillBullet;
+    public float cooldown;
 }

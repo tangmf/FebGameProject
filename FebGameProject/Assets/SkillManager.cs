@@ -6,28 +6,25 @@ using UnityEngine.UI;
 public class SkillManager : MonoBehaviour
 {
     private float nextActionTime = 0.0f;
-    public float period = 0.1f;
     public Transform attackPos;
     public List<Skills> skillList = new List<Skills>();
     public Skills currentSkill;
+
+    public Skills starterSkill;
+
+    //SkillUI
+    public Image skillIcon1;
+    public Image skillIcon2;
+    public Image skillIcon3;
+    public Image skillBackground1;
+    public Image skillBackground2;
+    public Image skillBackground3;
     // Start is called before the first frame update
     void Start()
     {
-        if (Time.time > nextActionTime)
-        {
-            if (Input.GetButtonDown("Fire1"))
-            {
-                if(currentSkill != null)
-                {
-                    Debug.Log("Player attacked using " + currentSkill.name);
-                    GameObject newBullet = (GameObject)Instantiate(currentSkill.skillBullet, attackPos.position, attackPos.rotation);
-                    Destroy(newBullet, 2f);
-                    nextActionTime += period;
-                }
-
-
-            }
-        }
+        skillList.Add(starterSkill);
+        UpdateSkillUI();
+        
     }
 
     // Update is called once per frame
@@ -45,6 +42,22 @@ public class SkillManager : MonoBehaviour
         {
             SwapSkill(2);
         }
+
+        if (Time.time > nextActionTime)
+        {
+            if (Input.GetButtonDown("Fire1"))
+            {
+                if (currentSkill != null)
+                {
+                    Debug.Log("Player attacked using " + currentSkill.name);
+                    GameObject newBullet = (GameObject)Instantiate(currentSkill.skillBullet, attackPos.position, attackPos.rotation);
+                    Destroy(newBullet, 2f);
+                    nextActionTime += currentSkill.cooldown;
+                }
+
+
+            }
+        }
     }
 
     public void SwapSkill(int i)
@@ -55,5 +68,13 @@ public class SkillManager : MonoBehaviour
     public void AddSkill(Skills skill)
     {
         skillList.Add(skill);
+    }
+
+    public void UpdateSkillUI()
+    {
+        skillIcon1.sprite = skillList[0].skillIcon;
+        skillIcon2.sprite = skillList[1].skillIcon;
+        skillIcon3.sprite = skillList[2].skillIcon;
+
     }
 }
