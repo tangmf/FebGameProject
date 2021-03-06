@@ -103,7 +103,7 @@ MonoBehaviour:
   animator: {fileID: 7347224810888515257}
   collideAnimationName: CollideFire
   skill: {fileID: 0}
-  damage: 10
+  damage: 40
 --- !u!50 &278162815109866070
 Rigidbody2D:
   serializedVersion: 4

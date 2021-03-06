@@ -28,7 +28,7 @@ public class EnemyAI : MonoBehaviour
         {
             if (Time.time > nextActionTime)
             {
-                nextActionTime += period;
+                nextActionTime = Time.time + period;
                 Shoot();
             }
         }

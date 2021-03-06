@@ -11,6 +11,9 @@ public class Bullet : MonoBehaviour
     public Skills skill;
     public int damage;
 
+    public bool HurtPlayer = false;
+    public bool HurtEnemy = true;
+
 
     void Start()
     {
@@ -26,12 +29,20 @@ public class Bullet : MonoBehaviour
         }
         else
         {
-            if (hitInfo.CompareTag("Enemy"))
+            if (hitInfo.CompareTag("Enemy") && HurtEnemy)
             {
                 EnemyHealth enemy = hitInfo.GetComponent<EnemyHealth>();
                 if (enemy != null)
                 {
                     enemy.TakeDamage(damage);
+                }
+            }
+            else if (hitInfo.CompareTag("Player") && HurtPlayer)
+            {
+                HealthManager player = hitInfo.GetComponent<HealthManager>();
+                if (player != null)
+                {
+                    player.TakeDamage(damage);
                 }
             }
             // Play Collide animation

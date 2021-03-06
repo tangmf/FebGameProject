@@ -14,8 +14,7 @@ GameObject:
   - component: {fileID: 3241028558569864829}
   - component: {fileID: 5073164021686171472}
   - component: {fileID: 1229621470020436441}
-  - component: {fileID: 2630928569192831607}
-  - component: {fileID: -5900293423337026007}
+  - component: {fileID: -6367686868617995454}
   m_Layer: 0
   m_Name: enemyBullet
   m_TagString: Untagged
@@ -159,7 +158,7 @@ CircleCollider2D:
   m_Offset: {x: 0.8819747, y: -0.032756925}
   serializedVersion: 2
   m_Radius: 0.32778323
---- !u!114 &2630928569192831607
+--- !u!114 &-6367686868617995454
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,23 +167,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1876739686352728062}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b62892706da37744e85fcf210aa527a7, type: 3}
+  m_Script: {fileID: 11500000, guid: 34fad8773116def4f86fb78b4c928d3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 20
   rb: {fileID: 5391054906689393298}
-  speed: 5
---- !u!114 &-5900293423337026007
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1876739686352728062}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd348b4e1ae9dd24c80b15808d64f4e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 5391054906689393298}
-  damage: 40
-  hurtPlayer: 1
+  animator: {fileID: 3241028558569864829}
+  collideAnimationName: CollideFire
+  skill: {fileID: 0}
+  damage: 10
+  HurtPlayer: 1
+  HurtEnemy: 0
