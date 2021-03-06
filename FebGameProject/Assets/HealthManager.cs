@@ -17,10 +17,11 @@ public class HealthManager : MonoBehaviour
     public float attackRange;
     public PlayerInventory playerInventory;
     public List<Item> items;
+    public Slider slider;
     // Start is called before the first frame update
     void Start()
     {
-        healthText.text = healthPoints.ToString();
+        UpdateHealth();
         PlayerInventory items = playerInventory.GetComponent<PlayerInventory>();
     }
 
@@ -62,12 +63,12 @@ public class HealthManager : MonoBehaviour
         if(healthPoints <= 0)
         {
             healthPoints = 0;
-            healthText.text = healthPoints.ToString();
+            UpdateHealth();
             Die();
         }
         else
         {
-            healthText.text = healthPoints.ToString();
+            UpdateHealth();
         }
     }
 
@@ -84,6 +85,12 @@ public class HealthManager : MonoBehaviour
         {
             healthPoints = 100;
         }
+        UpdateHealth();
+    }
+
+    public void UpdateHealth()
+    {
+        slider.value = healthPoints;
         healthText.text = healthPoints.ToString();
     }
 
