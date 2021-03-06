@@ -47,10 +47,5 @@ public class Shop : MonoBehaviour
         }
     }
 
-    public void GivePlayerSkill(Skills skill)
-    {
-
-    }
-
 
 }

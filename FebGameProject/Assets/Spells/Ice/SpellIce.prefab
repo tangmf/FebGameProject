@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 3052810937958002805}
   - component: {fileID: 3052810937958002802}
   - component: {fileID: 3052810937958002806}
-  - component: {fileID: 3052810937958002807}
   - component: {fileID: 957671443992361287}
+  - component: {fileID: 8008244623692772420}
+  - component: {fileID: 8279728062814519441}
   m_Layer: 0
   m_Name: SpellIce
   m_TagString: Untagged
@@ -125,22 +126,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!70 &3052810937958002807
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3052810937958002803}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.37, y: 0}
-  m_Size: {x: 2.1657987, y: 0.42212588}
-  m_Direction: 1
 --- !u!114 &957671443992361287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,7 +138,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fad8773116def4f86fb78b4c928d3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 10
   rb: {fileID: 3052810937958002806}
   animator: {fileID: 3052810937958002802}
   collideAnimationName: CollideIce
+  skill: {fileID: 11400000, guid: 93c69258a3ba18243976cdc5746ecd9c, type: 2}
+  damage: 20
+--- !u!58 &8008244623692772420
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3052810937958002803}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 1.0166788, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.3725958
+--- !u!58 &8279728062814519441
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3052810937958002803}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 1.0267448, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.2216053

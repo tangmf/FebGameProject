@@ -12,6 +12,8 @@ public class SkillManager : MonoBehaviour
 
     public Skills starterSkill;
 
+    public int slots = 3;
+
     //SkillUI
     public Image skillIcon1;
     public Image skillIcon2;
@@ -23,13 +25,13 @@ public class SkillManager : MonoBehaviour
     void Start()
     {
         skillList.Add(starterSkill);
-        if(skillList.Count != 0)
+        if (skillList.Count != 0)
         {
             currentSkill = starterSkill;
         }
         UpdateSkillUI();
-        
-        
+
+
     }
 
     // Update is called once per frame
@@ -58,7 +60,7 @@ public class SkillManager : MonoBehaviour
                     Debug.Log("Player attacked using " + currentSkill.name);
                     GameObject newBullet = (GameObject)Instantiate(currentSkill.skillBullet, attackPos.position, attackPos.rotation);
                     Destroy(newBullet, 2f);
-                    
+
                 }
 
 
@@ -73,7 +75,16 @@ public class SkillManager : MonoBehaviour
 
     public void AddSkill(Skills skill)
     {
-        skillList.Add(skill);
+        if (skillList.Count != slots)
+        {
+            skillList.Add(skill);
+            UpdateSkillUI();
+        }
+        else
+        {
+            Debug.Log("Max skills reached");
+        }
+
     }
 
     public void UpdateSkillUI()
