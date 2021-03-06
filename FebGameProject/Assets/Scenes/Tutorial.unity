@@ -328,7 +328,7 @@ PrefabInstance:
     - target: {fileID: 948994310894128539, guid: b1ee25f1ed5047d41abdccbca21fe94f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.98
+      value: 1.18
       objectReference: {fileID: 0}
     - target: {fileID: 2413755924913816759, guid: b1ee25f1ed5047d41abdccbca21fe94f,
         type: 3}
@@ -1295,7 +1295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9dec9c8e91189f4dbcfbcf873745e2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 0.1
   playerDetect: 0
 --- !u!114 &1208123291
 MonoBehaviour:
