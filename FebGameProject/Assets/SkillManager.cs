@@ -92,6 +92,5 @@ public class SkillManager : MonoBehaviour
         skillIcon1.sprite = skillList[0].skillIcon;
         skillIcon2.sprite = skillList[1].skillIcon;
         skillIcon3.sprite = skillList[2].skillIcon;
-
     }
 }
