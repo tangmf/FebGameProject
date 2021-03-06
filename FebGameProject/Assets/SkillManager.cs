@@ -52,7 +52,7 @@ public class SkillManager : MonoBehaviour
         {
             if (Input.GetButtonDown("Fire1"))
             {
-                nextActionTime += currentSkill.cooldown;
+                nextActionTime = Time.time + currentSkill.cooldown;
                 if (currentSkill != null)
                 {
                     Debug.Log("Player attacked using " + currentSkill.name);
