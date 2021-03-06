@@ -32,7 +32,7 @@ public class Damage : MonoBehaviour
         }
         else if (hitInfo.CompareTag("Enemy"))
         {
-            EnemyAI enemy = hitInfo.GetComponent<EnemyAI>();
+            EnemyHealth enemy = hitInfo.GetComponent<EnemyHealth>();
             if (enemy != null)
             {
                 enemy.TakeDamage(damage);

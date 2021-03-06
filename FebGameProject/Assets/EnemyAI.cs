@@ -8,16 +8,13 @@ public class EnemyAI : MonoBehaviour
     SpriteRenderer spriteRenderer;
     Rigidbody2D rb2d;
     public bool playerDetect = false;
-    public int healthPoints = 100;
-    public int damage = 20;
-    public int defence = 10;
     public GameObject entity;
     // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponent<Animator>();
+        animator = entity.gameObject.GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = entity.gameObject.GetComponent<SpriteRenderer>();
     }
 
     // // Update is called once per frame
@@ -28,33 +25,25 @@ public class EnemyAI : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        animator.SetBool("PlayerDetect", true);
-        playerDetect = true;
-        FollowPlayer targetPlayer = this.GetComponent<FollowPlayer>();
-        targetPlayer.TargetPlayer();
-    }
-
-    void OnTriggerExit2D(Collider2D hitInfo)
-    {
-        animator.SetBool("PlayerDetect", false);
-        playerDetect = false;
-    }
-
-    public void TakeDamage(int damage)
-    {
-        healthPoints -= damage;
-        if (healthPoints <= 0)
+        if (hitInfo.CompareTag("Player"))
         {
-            healthPoints = 0;
-            Die();
+            animator.SetBool("PlayerDetect", true);
+            playerDetect = true;
+            FollowPlayer targetPlayer = entity.GetComponent<FollowPlayer>();
+            targetPlayer.TargetPlayer();
         }
 
     }
 
-    public void Die()
+    void OnTriggerExit2D(Collider2D hitInfo)
     {
-        Destroy(entity);
-        Debug.Log(entity.ToString() + " has been killed");
+        if (hitInfo.CompareTag("Player"))
+        {
+            animator.SetBool("PlayerDetect", false);
+            playerDetect = false;
+        }
+
     }
+
 
 }

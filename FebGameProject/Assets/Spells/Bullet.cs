@@ -9,6 +9,7 @@ public class Bullet : MonoBehaviour
     public Animator animator;
     public string collideAnimationName;
     public Skills skill;
+    public int damage;
 
 
     void Start()
@@ -17,11 +18,22 @@ public class Bullet : MonoBehaviour
         rb.velocity = transform.right * speed;
     }
 
-    void OnTriggerEnter2D (Collider2D hitInfo)
+    void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        // If collides with something except player and spell
-        if (hitInfo.name != "Player" && !hitInfo.name.Contains("Spell"))
+        if (hitInfo.CompareTag("ignore"))
         {
+            return;
+        }
+        else
+        {
+            if (hitInfo.CompareTag("Enemy"))
+            {
+                EnemyHealth enemy = hitInfo.GetComponent<EnemyHealth>();
+                if (enemy != null)
+                {
+                    enemy.TakeDamage(damage);
+                }
+            }
             // Play Collide animation
             animator.Play(collideAnimationName);
 
@@ -30,7 +42,8 @@ public class Bullet : MonoBehaviour
 
             // Destroy after animations length (sec)
             Destroy(gameObject, animator.GetCurrentAnimatorStateInfo(0).length);
-            
         }
+
+
     }
 }

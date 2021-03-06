@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 278162815109866070}
   - component: {fileID: 7347224810888515257}
   - component: {fileID: 1111152742206064532}
-  - component: {fileID: 1915052141393613185}
   - component: {fileID: 6349119393351512349}
   m_Layer: 0
   m_Name: SpellFire
@@ -99,11 +98,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fad8773116def4f86fb78b4c928d3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 2
   rb: {fileID: 278162815109866070}
   animator: {fileID: 7347224810888515257}
   collideAnimationName: CollideFire
   skill: {fileID: 0}
+  damage: 10
 --- !u!50 &278162815109866070
 Rigidbody2D:
   serializedVersion: 4
@@ -157,24 +157,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.8736086, y: -0.084561706}
+  m_Offset: {x: 0.8736086, y: -0.02421856}
   serializedVersion: 2
-  m_Radius: 0.56984246
---- !u!114 &1915052141393613185
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5982856773817540410}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd348b4e1ae9dd24c80b15808d64f4e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 278162815109866070}
-  damage: 40
-  hurtPlayer: 0
+  m_Radius: 0.4416144
 --- !u!58 &6349119393351512349
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -188,6 +173,6 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.8819747, y: -0.07801473}
+  m_Offset: {x: 0.8819747, y: -0.032756925}
   serializedVersion: 2
-  m_Radius: 0.4560119
+  m_Radius: 0.32778323
