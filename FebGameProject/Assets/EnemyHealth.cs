@@ -1,15 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
     public int healthPoints = 100;
     public GameObject entity;
+    public Slider slider;
     // Start is called before the first frame update
     void Start()
     {
-        
+        UpdateHealth();
     }
 
     // Update is called once per frame
@@ -26,6 +28,7 @@ public class EnemyHealth : MonoBehaviour
             healthPoints = 0;
             Die();
         }
+        UpdateHealth();
 
     }
 
@@ -33,5 +36,9 @@ public class EnemyHealth : MonoBehaviour
     {
         Destroy(entity);
         Debug.Log(entity.ToString() + " has been killed");
+    }
+    public void UpdateHealth()
+    {
+        slider.value = healthPoints;
     }
 }
