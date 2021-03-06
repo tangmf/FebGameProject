@@ -77,8 +77,24 @@ public class SkillManager : MonoBehaviour
     {
         if (skillList.Count != slots)
         {
-            skillList.Add(skill);
-            UpdateSkillUI();
+            bool exists = false;
+            foreach(Skills s in skillList)
+            {
+                if(s == skill)
+                {
+                    exists = true;
+                }
+            }
+            if (exists)
+            {
+                Debug.Log("Already have this skill");
+            }
+            else
+            {
+                skillList.Add(skill);
+                UpdateSkillUI();
+            }
+            
         }
         else
         {
