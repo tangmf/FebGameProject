@@ -52,12 +52,13 @@ public class SkillManager : MonoBehaviour
         {
             if (Input.GetButtonDown("Fire1"))
             {
+                nextActionTime += currentSkill.cooldown;
                 if (currentSkill != null)
                 {
                     Debug.Log("Player attacked using " + currentSkill.name);
                     GameObject newBullet = (GameObject)Instantiate(currentSkill.skillBullet, attackPos.position, attackPos.rotation);
                     Destroy(newBullet, 2f);
-                    nextActionTime += currentSkill.cooldown;
+                    
                 }
 
 

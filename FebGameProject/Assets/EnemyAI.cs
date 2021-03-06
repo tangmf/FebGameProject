@@ -17,11 +17,11 @@ public class EnemyAI : MonoBehaviour
         spriteRenderer = entity.gameObject.GetComponent<SpriteRenderer>();
     }
 
-    // // Update is called once per frame
-    // void Update()
-    // {
 
-    // }
+    void Update()
+    {
+        
+    }
 
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
