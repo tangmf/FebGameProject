@@ -23,7 +23,12 @@ public class SkillManager : MonoBehaviour
     void Start()
     {
         skillList.Add(starterSkill);
+        if(skillList.Count != 0)
+        {
+            currentSkill = starterSkill;
+        }
         UpdateSkillUI();
+        
         
     }
 

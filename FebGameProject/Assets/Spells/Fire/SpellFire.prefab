@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 4185204866298094149}
   - component: {fileID: 9039298852320691032}
   - component: {fileID: 278162815109866070}
-  - component: {fileID: 2671980890427293327}
   - component: {fileID: 7347224810888515257}
   - component: {fileID: 1111152742206064532}
   - component: {fileID: 1915052141393613185}
+  - component: {fileID: 6349119393351512349}
   m_Layer: 0
   m_Name: SpellFire
   m_TagString: Untagged
@@ -103,6 +103,7 @@ MonoBehaviour:
   rb: {fileID: 278162815109866070}
   animator: {fileID: 7347224810888515257}
   collideAnimationName: CollideFire
+  skill: {fileID: 0}
 --- !u!50 &278162815109866070
 Rigidbody2D:
   serializedVersion: 4
@@ -124,22 +125,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!70 &2671980890427293327
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5982856773817540410}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.07}
-  m_Size: {x: 3.0000007, y: 1.0301938}
-  m_Direction: 1
 --- !u!95 &7347224810888515257
 Animator:
   serializedVersion: 3
@@ -169,7 +154,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.8736086, y: -0.084561706}
@@ -190,3 +175,19 @@ MonoBehaviour:
   rb: {fileID: 278162815109866070}
   damage: 40
   hurtPlayer: 0
+--- !u!58 &6349119393351512349
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5982856773817540410}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.8819747, y: -0.07801473}
+  serializedVersion: 2
+  m_Radius: 0.4560119

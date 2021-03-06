@@ -9,18 +9,18 @@ public class Portal : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    void OnTriggerEnter2D(Collider2D hitInfo)
+    private void OnTriggerStay2D(Collider2D collider)
     {
-        if(hitInfo.gameObject.CompareTag("Player"))
+        if (collider.tag == "Player" && Input.GetKeyDown("e"))
         {
             if (nextScene)
             {
@@ -31,5 +31,6 @@ public class Portal : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
             }
         }
+
     }
 }
