@@ -51,8 +51,8 @@ public class PlayerMovement : MonoBehaviour
         bool Moving = Input.GetKey("left") || Input.GetKey("a") || Input.GetKey("right") || Input.GetKey("d");
         animator.SetBool("Moving", Moving);
 
-        bool Jump = Input.GetKey("w");
-        animator.SetBool("Jump", Jump);
+        bool Grounded = isGrounded;
+        animator.SetBool("Grounded", Grounded);
 
         bool Shoot = Input.GetKey(KeyCode.Space);
         animator.SetBool("Shoot", Shoot);
