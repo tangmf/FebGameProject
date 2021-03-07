@@ -1,13 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public GameObject gamemaster;
     private GameMaster gm;
     public float Speed = 5f;
     public int jumpForce = 10;
     public bool isGrounded = false;
+
+    public GameObject PauseMenu;
     Rigidbody2D rb2d;
 
     Animator animator;
@@ -22,6 +26,8 @@ public class PlayerMovement : MonoBehaviour
 
         gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameMaster>();
         transform.position = gm.lastCheckPointPos;
+
+        PauseMenu.SetActive(false);
     }
 
     // Update is called once per frame
@@ -48,6 +54,22 @@ public class PlayerMovement : MonoBehaviour
 
         }
 
+        if (Input.GetKeyDown("p"))
+        {
+            if (PauseMenu.activeSelf)
+            {
+                PauseMenu.SetActive(false);
+                Debug.Log("Menu closed");
+            }
+            else
+            {
+                PauseMenu.SetActive(true);
+                Debug.Log("Menu opened");
+            }
+
+
+        }
+
         bool Moving = Input.GetKey("left") || Input.GetKey("a") || Input.GetKey("right") || Input.GetKey("d");
         animator.SetBool("Moving", Moving);
 
@@ -65,6 +87,13 @@ public class PlayerMovement : MonoBehaviour
 
 
     }
+
+    public void LoadSceneByName(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+        Destroy(gamemaster);
+    }
+
 
 
 }

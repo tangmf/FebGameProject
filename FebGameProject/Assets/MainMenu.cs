@@ -5,8 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void PlayGame()
+    public Animator transition;
+    public float transitionTime = 1f;
+
+    public void NextScene()
     {
+        PlayTransition();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
@@ -14,5 +18,32 @@ public class MainMenu : MonoBehaviour
     {
         Debug.Log("QUIT!");
         Application.Quit();
+    }
+
+    public void PreviousScene()
+    {
+        PlayTransition();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void LoadSceneByName(string sceneName)
+    {
+        PlayTransition();
+        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+
+
+    }
+
+    public void AddSceneByName(string sceneName)
+    {
+        PlayTransition();
+        SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
+    }
+
+    IEnumerator PlayTransition()
+    {
+        transition.SetTrigger("Start");
+
+        yield return new WaitForSeconds(transitionTime);
     }
 }
