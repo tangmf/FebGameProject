@@ -76,8 +76,10 @@ public class PlayerMovement : MonoBehaviour
         bool Grounded = isGrounded;
         animator.SetBool("Grounded", Grounded);
 
-        bool Shoot = Input.GetKey(KeyCode.Space);
+        
+        bool Shoot = Input.GetButton("Fire1");
         animator.SetBool("Shoot", Shoot);
+        
 
         if (Input.GetKeyDown("r"))
         {
