@@ -301,6 +301,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShopUI: {fileID: 5838094349766940973}
+  skillOnSale: {fileID: 11400000, guid: 93c69258a3ba18243976cdc5746ecd9c, type: 2}
+  Icon: {fileID: 5838094349759276615}
+  Name: {fileID: 5838094349077329542}
 --- !u!212 &5838094349781678469
 SpriteRenderer:
   m_ObjectHideFlags: 0

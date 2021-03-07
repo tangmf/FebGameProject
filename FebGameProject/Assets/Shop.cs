@@ -1,13 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Shop : MonoBehaviour
 {
     public GameObject ShopUI;
+    public Skills skillOnSale;
+    public Image Icon;
+    public Text Name;
     // Start is called before the first frame update
     void Start()
     {
+        Icon.sprite = skillOnSale.skillIcon;
+        Name.text = skillOnSale.name;
         ShopUI.SetActive(false);
     }
 

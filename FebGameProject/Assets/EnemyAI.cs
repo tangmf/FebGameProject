@@ -59,7 +59,8 @@ public class EnemyAI : MonoBehaviour
 
     void Shoot()
     {
-        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        GameObject newBullet = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Destroy(newBullet, 2f);
 
     }
 
