@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8314968017361777970}
   - component: {fileID: 8314968017361777971}
   m_Layer: 0
-  m_Name: Enemy (1)
+  m_Name: EnemyDragon
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -415,13 +415,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8314968017186991337}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -0.17, y: 0, z: 0}
+  m_LocalRotation: {x: -0.13295259, y: 0.9911224, z: -0, w: 0}
+  m_LocalPosition: {x: -0.16999996, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3273314024469329776}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180.00002, z: -15.280001}
 --- !u!1 &8314968017405417904
 GameObject:
   m_ObjectHideFlags: 0
