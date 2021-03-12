@@ -54,17 +54,19 @@ public class PlayerMovement : MonoBehaviour
 
         }
 
-        if (Input.GetKeyDown("p"))
+        if (Input.GetKeyDown("escape"))
         {
             if (PauseMenu.activeSelf)
             {
                 PauseMenu.SetActive(false);
                 Debug.Log("Menu closed");
+                Time.timeScale = 1.0f;
             }
             else
             {
                 PauseMenu.SetActive(true);
                 Debug.Log("Menu opened");
+                Time.timeScale = 0.0f;
             }
 
 
@@ -92,6 +94,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void LoadSceneByName(string sceneName)
     {
+        Time.timeScale = 1.0f;
         SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
         Destroy(gamemaster);
     }
