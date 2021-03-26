@@ -71,6 +71,7 @@ public class SkillManager : MonoBehaviour
     public void SwapSkill(int i)
     {
         currentSkill = skillList[i];
+        nextActionTime = Time.time + currentSkill.cooldown;
     }
 
     public void AddSkill(Skills skill)
