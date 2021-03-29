@@ -143,7 +143,9 @@ MonoBehaviour:
   animator: {fileID: 3052810937958002802}
   collideAnimationName: CollideIce
   skill: {fileID: 11400000, guid: 93c69258a3ba18243976cdc5746ecd9c, type: 2}
-  damage: 20
+  damage: 80
+  HurtPlayer: 0
+  HurtEnemy: 1
 --- !u!58 &8008244623692772420
 CircleCollider2D:
   m_ObjectHideFlags: 0
