@@ -11,7 +11,6 @@ public class Inventory : MonoBehaviour
     void Start()
     {
 
-
         ResetSlots();
         selectedIndex = 0;
         HighlightSelectedIndex();

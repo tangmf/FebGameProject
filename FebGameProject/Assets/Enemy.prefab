@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6776112695064740420}
   - component: {fileID: 3036856913946198623}
   - component: {fileID: 2147092410338902458}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -131,6 +131,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25f2c5dbf53389d419d26a502e64bbab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerDetect: 0
+  entity: {fileID: 0}
+  firePoint: {fileID: 0}
+  period: 1
+  bulletPrefab: {fileID: 0}
 --- !u!61 &3036856913946198623
 BoxCollider2D:
   m_ObjectHideFlags: 0

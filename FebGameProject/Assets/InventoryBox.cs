@@ -13,7 +13,6 @@ public class InventoryBox : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        quantity.text = "0";
     }
 
     // Update is called once per frame
