@@ -5,11 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public GameObject groundCheck;
+    [SerializeField] private LayerMask jumpableGround;
     public GameObject gamemaster;
     private GameMaster gm;
     public float Speed = 5f;
-    public int jumpForce = 10;
+    public int jumpForce = 5;
+    public float sprintMultiplyer = 3f;
     public bool isGrounded = false;
+    public bool isSprinting = false;
 
     public GameObject PauseMenu;
     Rigidbody2D rb2d;
@@ -35,20 +39,38 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKey("d") || Input.GetKey("right"))
         {
-            rb2d.velocity = new Vector2(Speed, rb2d.velocity.y);
-            transform.eulerAngles = new Vector3(0, 0, 0);
+            if (isSprinting)
+            {
+                rb2d.velocity = new Vector2(Speed*sprintMultiplyer, rb2d.velocity.y);
+                transform.eulerAngles = new Vector3(0, 0, 0);
+            }
+            else
+            {
+                rb2d.velocity = new Vector2(Speed, rb2d.velocity.y);
+                transform.eulerAngles = new Vector3(0, 0, 0);
+            }
+            
         }
         else if (Input.GetKey("a") || Input.GetKey("left"))
         {
-            rb2d.velocity = new Vector2(-Speed, rb2d.velocity.y);
-            transform.eulerAngles = new Vector3(0, 180, 0);
+            if (isSprinting)
+            {
+                rb2d.velocity = new Vector2(-Speed*sprintMultiplyer, rb2d.velocity.y);
+                transform.eulerAngles = new Vector3(0, 180, 0);
+            }
+            else
+            {
+                rb2d.velocity = new Vector2(-Speed, rb2d.velocity.y);
+                transform.eulerAngles = new Vector3(0, 180, 0);
+            }
+            
         }
         else
         {
             rb2d.velocity = new Vector2(0, rb2d.velocity.y);
         }
 
-        if (Input.GetKey("w") && isGrounded)
+        if (Input.GetKey("w") && IsGrounded())
         {
             rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
 
@@ -70,6 +92,15 @@ public class PlayerMovement : MonoBehaviour
             }
 
 
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            isSprinting = true;
+        }
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            isSprinting = false;
         }
 
         bool Moving = Input.GetKey("left") || Input.GetKey("a") || Input.GetKey("right") || Input.GetKey("d");
@@ -98,6 +129,13 @@ public class PlayerMovement : MonoBehaviour
         SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
         Destroy(gamemaster);
     }
+
+    private bool IsGrounded()
+    {
+        BoxCollider2D coll = groundCheck.GetComponent<BoxCollider2D>();
+        return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, 0.1f, jumpableGround);
+    }
+
 
 
 

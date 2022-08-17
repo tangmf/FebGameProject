@@ -25,7 +25,7 @@ public class WeaponPickUp : MonoBehaviour
             PlayerInventory playerInventory = hitInfo.GetComponent<PlayerInventory>();
             if (playerInventory != null)
             {
-                if(playerInventory.itemList.Count < playerInventory.maxSlots)
+                if(playerInventory.takenSlots < playerInventory.maxSlots)
                 {
                     Destroy(gameObject);
                     Debug.Log(item.name + " Picked up");

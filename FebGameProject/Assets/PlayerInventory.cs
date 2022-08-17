@@ -5,74 +5,50 @@ using UnityEngine.UI;
 
 public class PlayerInventory : MonoBehaviour
 {
-    public List<Item> itemList = new List<Item>();
     public Transform handPos;
     public SpriteRenderer spriteRenderer;
-    public Item currentItem;
 
     private float nextActionTime = 0.0f;
     public float period = 0.1f;
     public Transform attackPos;
     public float attackRange;
 
-    public int maxSlots = 2;
+    public int maxSlots = 3;
+    public int takenSlots = 0;
     public GameObject inventoryUI;
-    public Text inventoryList;
-    public Text inventoryDesc;
-    public Image inventoryItemSprite;
-    public Text inventoryItemAtk;
-    public Text inventoryItemDef;
-    public HealthManager healthManager;
+
+
+    public GameObject slotsContainer;
 
     // Start is called before the first frame update
     void Start()
     {
+        slotsContainer.GetComponent<Inventory>().Initialize();
         inventoryUI.SetActive(false);
-        HealthManager stats = healthManager.GetComponent<HealthManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Time.time > nextActionTime)
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
+        
 
-                if (itemList.Count == 0)
-                {
-                    
-                    Debug.Log("no weapon");
-                    nextActionTime += period;
-                }
-                else
-                {
-                    
-                    Debug.Log("Player attacked using " + currentItem.name);
-                    GameObject newBullet = (GameObject)Instantiate(currentItem.bullet, attackPos.position, attackPos.rotation);
-                    Destroy(newBullet, 2f);
-                    nextActionTime += period;
-                }
-
-                
-            }
-        }
-        /*
         if (Input.GetKey("1"))
         {
-            SwapWeapon(0);
-            UpdateCurrentItemSprite();
+            SwapSlot(0);
         }
         else if (Input.GetKey("2"))
         {
-            SwapWeapon(1);
-            UpdateCurrentItemSprite();
+            SwapSlot(1);
         }
-        */
-        if (Input.GetKey("q") && currentItem != null)
+        else if (Input.GetKey("3"))
+        {
+            SwapSlot(2);
+        }
+
+        if (Input.GetKeyDown("q"))
         {
             DropCurrentItem();
-            UpdateInventoryList();
+
         }
 
         if (Input.GetKeyDown("i"))
@@ -94,47 +70,20 @@ public class PlayerInventory : MonoBehaviour
 
     public void AddItem(Item item)
     {
-        HealthManager stats = healthManager.GetComponent<HealthManager>();
-        itemList.Add(item);
-        currentItem = item;
-        stats.defence += item.defence;
-        stats.damage += item.damage;
-        UpdateCurrentItemSprite();
-        UpdateInventoryList();
+
+        AddItemToInventory(item, 1);
+        
     }
 
-    public void ListAllItems()
-    {
-        foreach(Item i in itemList)
-        {
-            Debug.Log(i.name);
-        }
-    }
-    /*
-    public void SwapWeapon(int i)
-    {
-        currentItem = itemList[i];
-    }
-    */
-    public void UpdateCurrentItemSprite()
-    {
-        spriteRenderer.sprite = currentItem.itemSprite;
-    }
+
+
 
     public void DropCurrentItem()
     {
-        HealthManager stats = healthManager.GetComponent<HealthManager>();
-        itemList.Remove(currentItem);
-        inventoryItemSprite.sprite = null;
-        inventoryDesc.text = null;
-        inventoryItemAtk.text = null;
-        inventoryItemDef.text = null;
-        Instantiate(currentItem.droppedItem, handPos.position, handPos.rotation);
-        stats.defence -= currentItem.defence;
-        stats.damage -= currentItem.damage;
-        currentItem = null;
-        spriteRenderer.sprite = null;
-        UpdateInventoryList();
+        Item item = slotsContainer.GetComponent<Inventory>().slots[slotsContainer.GetComponent<Inventory>().selectedIndex].GetComponent<InventoryBox>().currentItem;
+        RemoveItemFromInventory(item, 1);
+
+        Instantiate(item.droppedItem, handPos.position, handPos.rotation);
 
     }
 
@@ -143,19 +92,73 @@ public class PlayerInventory : MonoBehaviour
         inventoryUI.SetActive(false);
     }
 
-    public void UpdateInventoryList()
+
+    public void AddItemToInventory(Item item, int qty)
     {
-        inventoryList.text = "";
-        /*
-        foreach (Item i in itemList)
+        bool continue1 = true;
+        List<GameObject> slotList = slotsContainer.GetComponent<Inventory>().slots;
+        foreach (GameObject slot in slotList)
         {
-            inventoryList.text = inventoryList.text + i.name;
+            InventoryBox slotObject = slot.GetComponent<InventoryBox>();
+            if (slotObject.currentItem == item)
+            {
+                slotObject.AddItemStack(item, qty);
+                continue1 = false;
+                break;
+            }
+
         }
-        */
-        inventoryList.text = currentItem.name;
-        inventoryDesc.text = currentItem.desc;
-        inventoryItemDef.text = "+ " + currentItem.defence + " defence";
-        inventoryItemAtk.text = "+ " + currentItem.damage + " damage";
+
+        if (continue1){
+
+            foreach (GameObject slot in slotList)
+            {
+                InventoryBox slotObject = slot.GetComponent<InventoryBox>();
+                if (slotObject.currentItem == null)
+                {
+                    slotObject.AddItem(item, qty);
+                    break;
+                }
+
+            }
+        }
+        
+        Debug.Log("Item Added: " + item.name);
+    }
+
+    public void RemoveItemFromInventory(Item item, int qty)
+    {
+        List<GameObject> slotList = slotsContainer.GetComponent<Inventory>().slots;
+        foreach (GameObject slot in slotList)
+        {
+            InventoryBox slotObject = slot.GetComponent<InventoryBox>();
+            if (slotObject.currentItem == item)
+            {
+                int quantity = int.Parse(slotObject.quantity.text.ToString());
+                if (quantity > 1)
+                {
+                    slotObject.RemoveItemStack(item, qty);
+                }
+                else
+                {
+                    slotObject.RemoveItem(item, qty);
+                    spriteRenderer.sprite = null;
+                }
+                
+                break;
+            }
+
+        }
+        Debug.Log("Item Removed: " + item.name);
+    }
+
+    public void SwapSlot(int i)
+    {
+
+
+        slotsContainer.GetComponent<Inventory>().selectedIndex = i;
+        slotsContainer.GetComponent<Inventory>().HighlightSelectedIndex();
+        spriteRenderer.sprite = slotsContainer.GetComponent<Inventory>().slots[i].GetComponent<InventoryBox>().currentItem.itemSprite;
     }
 
 }

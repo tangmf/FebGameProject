@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class SkillManager : MonoBehaviour
 {
     private float nextActionTime = 0.0f;
+
+    private float nATskill1 = 0.0f;
+
     public Transform attackPos;
     public List<Skills> skillList = new List<Skills>();
     public Skills currentSkill;
@@ -39,15 +42,15 @@ public class SkillManager : MonoBehaviour
     {
         if (Input.GetKey("1"))
         {
-            SwapSkill(0);
+            SwapSkill(skillList[0]);
         }
         else if (Input.GetKey("2"))
         {
-            SwapSkill(1);
+            SwapSkill(skillList[1]);
         }
         else if (Input.GetKey("3"))
         {
-            SwapSkill(2);
+            SwapSkill(skillList[2]);
         }
 
         if (Time.time > nextActionTime)
@@ -57,9 +60,7 @@ public class SkillManager : MonoBehaviour
                 nextActionTime = Time.time + currentSkill.cooldown;
                 if (currentSkill != null)
                 {
-                    Debug.Log("Player attacked using " + currentSkill.name);
-                    GameObject newBullet = (GameObject)Instantiate(currentSkill.skillBullet, attackPos.position, attackPos.rotation);
-                    Destroy(newBullet, 2f);
+                    CastSkill(currentSkill);
 
                 }
 
@@ -68,14 +69,23 @@ public class SkillManager : MonoBehaviour
         }
     }
 
-    public void SwapSkill(int i)
+    public void CastSkill(Skills skill)
     {
-        currentSkill = skillList[i];
-        nextActionTime = Time.time + currentSkill.cooldown;
+        Debug.Log("Player attacked using " + skill.name);
+        GameObject newBullet = (GameObject)Instantiate(skill.skillBullet, attackPos.position, attackPos.rotation);
+        Destroy(newBullet, 2f);
+    }
+
+    public void SwapSkill(Skills skill)
+    {
+        UpdateSkillUI();
+        currentSkill = skill;
+        nextActionTime = Time.time + skill.cooldown;
     }
 
     public void AddSkill(Skills skill)
     {
+        Debug.Log("Skill being added");
         if (skillList.Count != slots)
         {
             bool exists = false;
@@ -110,4 +120,5 @@ public class SkillManager : MonoBehaviour
         skillIcon2.sprite = skillList[1].skillIcon;
         skillIcon3.sprite = skillList[2].skillIcon;
     }
+
 }

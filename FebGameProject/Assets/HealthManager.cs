@@ -16,13 +16,11 @@ public class HealthManager : MonoBehaviour
     public Transform attackPos;
     public float attackRange;
     public PlayerInventory playerInventory;
-    public List<Item> items;
     public Slider slider;
     // Start is called before the first frame update
     void Start()
     {
         UpdateHealth();
-        PlayerInventory items = playerInventory.GetComponent<PlayerInventory>();
     }
 
     void Update()
@@ -35,7 +33,7 @@ public class HealthManager : MonoBehaviour
 
         }
         */
-
+        /*
         if (Time.time > nextActionTime)
         {
             if (Input.GetKey(KeyCode.Space))
@@ -55,7 +53,9 @@ public class HealthManager : MonoBehaviour
                 nextActionTime += period;
             }
         }
+        */
     }
+        
 
     public void TakeDamage(int damage)
     {

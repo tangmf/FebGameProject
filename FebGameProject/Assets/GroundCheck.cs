@@ -5,6 +5,7 @@ using UnityEngine;
 public class GroundCheck : MonoBehaviour
 {
     public GameObject Player;
+    private int enteredGrounds = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,14 +22,24 @@ public class GroundCheck : MonoBehaviour
     {
         if (collision.collider.tag == "Ground")
         {
-            Player.GetComponent<PlayerMovement>().isGrounded = true;
+            enteredGrounds++;
+            if (enteredGrounds > 0)
+            {
+                Player.GetComponent<PlayerMovement>().isGrounded = true;
+            }
+            
         }
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.collider.tag == "Ground")
         {
-            Player.GetComponent<PlayerMovement>().isGrounded = false;
+            enteredGrounds--;
+            if (enteredGrounds <= 0)
+            {
+                enteredGrounds = 0;
+                Player.GetComponent<PlayerMovement>().isGrounded = false;
+            }
         }
     }
 }

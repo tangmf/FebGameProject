@@ -9,6 +9,8 @@ public class Shop : MonoBehaviour
     public Skills skillOnSale;
     public Image Icon;
     public Text Name;
+    public List<GameObject> playersInCollision = new List<GameObject>();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +29,7 @@ public class Shop : MonoBehaviour
     {
         if (collision.collider.tag == "Player" && Input.GetKeyDown("e"))
         {
+            playersInCollision.Add(collision.gameObject);
             ToggleUI();
         }
         
@@ -36,6 +39,7 @@ public class Shop : MonoBehaviour
     {
         if (collision.collider.tag == "Player")
         {
+            playersInCollision.Remove(collision.gameObject);
             ShopUI.SetActive(false);
         }
 
@@ -53,5 +57,13 @@ public class Shop : MonoBehaviour
         }
     }
 
+    public void Buy()
+    {
+        Debug.Log("Skill bought");
+        foreach(GameObject player in playersInCollision)
+        {
+            player.GetComponent<SkillManager>().AddSkill(skillOnSale);
+        }
+    }
 
 }

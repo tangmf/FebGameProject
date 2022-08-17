@@ -154,6 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   damage: 40
+  animator: {fileID: 0}
   hurtPlayer: 1
 --- !u!61 &18443363
 BoxCollider2D:
@@ -531,6 +532,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShopUI: {fileID: 709137444}
+  skillOnSale: {fileID: 0}
+  Icon: {fileID: 0}
+  Name: {fileID: 0}
+  playersInCollision: []
 --- !u!4 &159577387
 Transform:
   m_ObjectHideFlags: 0
@@ -1620,6 +1625,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   damage: 40
+  animator: {fileID: 0}
   hurtPlayer: 1
 --- !u!61 &1167442341
 BoxCollider2D:
