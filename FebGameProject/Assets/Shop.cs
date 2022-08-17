@@ -25,21 +25,21 @@ public class Shop : MonoBehaviour
         
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnTriggerStay2D(Collider2D collider)
     {
-        if (collision.collider.tag == "Player" && Input.GetKeyDown("e"))
+        if (collider.tag == "Player" && Input.GetKeyDown("e"))
         {
-            playersInCollision.Add(collision.gameObject);
+            playersInCollision.Add(collider.gameObject);
             ToggleUI();
         }
         
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerExit2D(Collider2D collider)
     {
-        if (collision.collider.tag == "Player")
+        if (collider.tag == "Player")
         {
-            playersInCollision.Remove(collision.gameObject);
+            playersInCollision.Remove(collider.gameObject);
             ShopUI.SetActive(false);
         }
 
