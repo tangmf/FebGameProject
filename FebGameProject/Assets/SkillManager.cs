@@ -10,53 +10,57 @@ public class SkillManager : MonoBehaviour
     private float nATskill1 = 0.0f;
 
     public Transform attackPos;
-    public List<Skills> skillList = new List<Skills>();
-    public Skills currentSkill;
 
+    private int slotIndex;
     public Skills starterSkill;
 
     public int slots = 3;
 
     //SkillUI
-    public Image skillIcon1;
-    public Image skillIcon2;
-    public Image skillIcon3;
-    public Image skillBackground1;
-    public Image skillBackground2;
-    public Image skillBackground3;
+    public GameObject skillInventory;
     // Start is called before the first frame update
     void Start()
     {
-        skillList.Add(starterSkill);
-        if (skillList.Count != 0)
-        {
-            currentSkill = starterSkill;
-        }
-        UpdateSkillUI();
-
+        AddSkill(starterSkill);
+        slotIndex = skillInventory.GetComponent<SkillInventory>().selectedIndex;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey("1"))
+        if (Input.GetKeyDown("z"))
         {
-            SwapSkill(skillList[0]);
+            if(slotIndex<= 0)
+            {
+                SwapSlot(slotIndex);
+            }
+            else
+            {
+                slotIndex--;
+                SwapSlot(slotIndex);
+            }
+            
         }
-        else if (Input.GetKey("2"))
+        else if (Input.GetKeyDown("x"))
         {
-            SwapSkill(skillList[1]);
-        }
-        else if (Input.GetKey("3"))
-        {
-            SwapSkill(skillList[2]);
+            if (slotIndex >= slots-1)
+            {
+                SwapSlot(slotIndex);
+            }
+            else
+            {
+                slotIndex++;
+                SwapSlot(slotIndex);
+            }
         }
 
         if (Time.time > nextActionTime)
         {
             if (Input.GetButtonDown("Fire1"))
             {
+                
+                Skills currentSkill = skillInventory.GetComponent<SkillInventory>().slots[skillInventory.GetComponent<SkillInventory>().selectedIndex].GetComponent<SkillSlot>().currentSkill;
                 nextActionTime = Time.time + currentSkill.cooldown;
                 if (currentSkill != null)
                 {
@@ -76,49 +80,47 @@ public class SkillManager : MonoBehaviour
         Destroy(newBullet, 2f);
     }
 
-    public void SwapSkill(Skills skill)
-    {
-        UpdateSkillUI();
-        currentSkill = skill;
-        nextActionTime = Time.time + skill.cooldown;
-    }
 
     public void AddSkill(Skills skill)
     {
         Debug.Log("Skill being added");
-        if (skillList.Count != slots)
+
+        bool found = false;
+        foreach(GameObject slot in skillInventory.GetComponent<SkillInventory>().slots)
         {
-            bool exists = false;
-            foreach(Skills s in skillList)
+            if(slot.GetComponent<SkillSlot>().currentSkill == skill)
             {
-                if(s == skill)
+                found = true;
+            }
+        }
+        if (!found)
+        {
+            bool available = false;
+            foreach (GameObject slot in skillInventory.GetComponent<SkillInventory>().slots)
+            {
+                if (slot.GetComponent<SkillSlot>().currentSkill == null)
                 {
-                    exists = true;
+                    available = true;
+                    slot.GetComponent<SkillSlot>().AssignSkill(skill);
+                    break;
                 }
             }
-            if (exists)
+            if (!available)
             {
-                Debug.Log("Already have this skill");
+                Debug.Log("Max skills reached");
             }
-            else
-            {
-                skillList.Add(skill);
-                UpdateSkillUI();
-            }
-            
         }
-        else
-        {
-            Debug.Log("Max skills reached");
-        }
+        
+
+
 
     }
 
-    public void UpdateSkillUI()
+    public void SwapSlot(int i)
     {
-        skillIcon1.sprite = skillList[0].skillIcon;
-        skillIcon2.sprite = skillList[1].skillIcon;
-        skillIcon3.sprite = skillList[2].skillIcon;
+        skillInventory.GetComponent<SkillInventory>().selectedIndex = i;
+        skillInventory.GetComponent<SkillInventory>().HighlightSelectedIndex();
+        nextActionTime = Time.time + skillInventory.GetComponent<SkillInventory>().slots[skillInventory.GetComponent<SkillInventory>().selectedIndex].GetComponent<SkillSlot>().currentSkill.cooldown;
     }
 
 }
