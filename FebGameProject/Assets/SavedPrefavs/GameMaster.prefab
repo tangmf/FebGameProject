@@ -2078,6 +2078,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SkillSlot
       objectReference: {fileID: 0}
+    - target: {fileID: 3888338455327335463, guid: 6677d6160ed547b4ea25d5835bd1ff8f,
+        type: 3}
+      propertyPath: m_Value
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 6081186488022206355, guid: 6677d6160ed547b4ea25d5835bd1ff8f,
         type: 3}
       propertyPath: m_AnchorMax.x

@@ -31,7 +31,7 @@ public class SkillManager : MonoBehaviour
     {
         if (Input.GetKeyDown("z"))
         {
-            if(slotIndex<= 0)
+            if (slotIndex <= 0)
             {
                 SwapSlot(slotIndex);
             }
@@ -40,11 +40,11 @@ public class SkillManager : MonoBehaviour
                 slotIndex--;
                 SwapSlot(slotIndex);
             }
-            
+
         }
         else if (Input.GetKeyDown("x"))
         {
-            if (slotIndex >= slots-1)
+            if (slotIndex >= slots - 1)
             {
                 SwapSlot(slotIndex);
             }
@@ -55,25 +55,33 @@ public class SkillManager : MonoBehaviour
             }
         }
 
-        if (Time.time > nextActionTime)
+        if (Input.GetButtonDown("Fire1"))
         {
-            if (Input.GetButtonDown("Fire1"))
+
+            SkillSlot slot = skillInventory.GetComponent<SkillInventory>().slots[skillInventory.GetComponent<SkillInventory>().selectedIndex].GetComponent<SkillSlot>();
+            if (slot.currentSkill != null)
             {
-                
-                Skills currentSkill = skillInventory.GetComponent<SkillInventory>().slots[skillInventory.GetComponent<SkillInventory>().selectedIndex].GetComponent<SkillSlot>().currentSkill;
-                nextActionTime = Time.time + currentSkill.cooldown;
-                if (currentSkill != null)
+
+                if (slot.isCoolingDown)
                 {
-                    CastSkill(currentSkill);
 
                 }
-
+                else
+                {
+                    CastSkill(slot.currentSkill);
+                    Debug.Log("START CD");
+                    slot.isCoolingDown = true;
+                    slot.coolDownTime = slot.currentSkill.cooldown;
+                    slot.coolDownTimer = slot.coolDownTime;
+                }
 
             }
+
+
         }
     }
 
-    public void CastSkill(Skills skill)
+        public void CastSkill(Skills skill)
     {
         Debug.Log("Player attacked using " + skill.name);
         GameObject newBullet = (GameObject)Instantiate(skill.skillBullet, attackPos.position, attackPos.rotation);
@@ -120,7 +128,6 @@ public class SkillManager : MonoBehaviour
     {
         skillInventory.GetComponent<SkillInventory>().selectedIndex = i;
         skillInventory.GetComponent<SkillInventory>().HighlightSelectedIndex();
-        nextActionTime = Time.time + skillInventory.GetComponent<SkillInventory>().slots[skillInventory.GetComponent<SkillInventory>().selectedIndex].GetComponent<SkillSlot>().currentSkill.cooldown;
     }
 
 }

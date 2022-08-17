@@ -9,17 +9,24 @@ public class SkillSlot : MonoBehaviour
     public GameObject backImage;
     public GameObject displayImage;
     public Slider coolDown;
+    public bool isCoolingDown = false;
+    public float coolDownTimer = 0.0f;
+    public float coolDownTime;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        coolDown.value = 0;
+        coolDownTime = 3.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (isCoolingDown)
+        {
+            StartCoolDown();
+        }
     }
 
     public void AssignSkill(Skills skill)
@@ -38,6 +45,21 @@ public class SkillSlot : MonoBehaviour
         currentSkill = null;
         displayImage.GetComponent<Image>().sprite = null;
         Debug.Log("Skill Successfully removed");
+    }
+
+    public void StartCoolDown()
+    {
+        coolDownTimer -= Time.deltaTime;
+        if(coolDownTimer < 0.0f)
+        {
+            Debug.Log("END CD");
+            isCoolingDown = false;
+            coolDown.value = 0;
+        }
+        else
+        {
+            coolDown.value = (coolDownTime -coolDownTimer) / coolDownTime * coolDown.maxValue;
+        }
     }
 
     public void Highlight()
