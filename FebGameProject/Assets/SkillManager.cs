@@ -24,6 +24,7 @@ public class SkillManager : MonoBehaviour
         skillInventory.GetComponent<SkillInventory>().Initialize();
         slotIndex = skillInventory.GetComponent<SkillInventory>().selectedIndex;
         AddSkill(starterSkill);
+        SwapSlot(0);
 
     }
 

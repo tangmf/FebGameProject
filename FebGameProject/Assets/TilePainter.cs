@@ -15,6 +15,10 @@ public class TilePainter : MonoBehaviour
 
     public GameObject buildManager;
 
+    public GameObject player;
+    public Vector3Int playerPos;
+
+    public int range = 4;
     void Update()
     {
         /*
@@ -30,6 +34,30 @@ public class TilePainter : MonoBehaviour
         {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             position = tilemap.WorldToCell(mousePos);
+            playerPos = tilemap.WorldToCell(player.transform.position);
+            if(Mathf.Abs(playerPos.x - position.x) >= range)
+            {
+                if(playerPos.x < position.x)
+                {
+                    position.x = playerPos.x + range;
+                }
+                else
+                {
+                    position.x = playerPos.x - range;
+                }
+                
+            }
+            if (Mathf.Abs(playerPos.y - position.y) >= range)
+            {
+                if(playerPos.y < position.y)
+                {
+                    position.y = playerPos.y + range;
+                }
+                else
+                {
+                    position.y = playerPos.y - range;
+                }
+            }
 
             if (position != previousPosition)
             {
