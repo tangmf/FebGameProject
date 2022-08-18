@@ -10,8 +10,6 @@ public class SkillInventory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-        Initialize();
         ResetSlots();
         selectedIndex = 0;
         HighlightSelectedIndex();

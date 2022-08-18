@@ -21,6 +21,7 @@ public class SkillManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        skillInventory.GetComponent<SkillInventory>().Initialize();
         AddSkill(starterSkill);
         slotIndex = skillInventory.GetComponent<SkillInventory>().selectedIndex;
 
