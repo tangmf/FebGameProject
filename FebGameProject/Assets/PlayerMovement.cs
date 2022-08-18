@@ -106,13 +106,6 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    public void LoadSceneByName(string sceneName)
-    {
-        Time.timeScale = 1.0f;
-        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
-        Destroy(gamemaster);
-    }
-
     private bool IsGrounded()
     {
         BoxCollider2D coll = groundCheck.GetComponent<BoxCollider2D>();

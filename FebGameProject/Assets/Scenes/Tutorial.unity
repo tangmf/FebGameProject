@@ -3541,6 +3541,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 456489883}
   m_CullTransparentMesh: 0
+--- !u!114 &477348356 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7274852355472481464, guid: 792a48229d3967b4094c7ef2b8d01d89,
+    type: 3}
+  m_PrefabInstance: {fileID: 1974121830560416647}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f097451d7d5364e4788b6ba28706d1ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &548414658
 GameObject:
   m_ObjectHideFlags: 0
@@ -4169,6 +4181,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
   interactManagerObject: {fileID: 55997012}
+--- !u!114 &1013350229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013350223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e2bd2b23a4f06d44b82520be64df847, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilePainter: {fileID: 1401111019}
 --- !u!1 &1124438950 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5915330728010465195, guid: e253e2c0b9475cd48a38636a9666f973,
@@ -4367,6 +4392,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b999143a50a5895469d03170b20ff2ec, type: 3}
+--- !u!1 &1401111019 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7273441294034452162, guid: 792a48229d3967b4094c7ef2b8d01d89,
+    type: 3}
+  m_PrefabInstance: {fileID: 1974121830560416647}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1546286254
 GameObject:
   m_ObjectHideFlags: 0
@@ -5527,6 +5558,27 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 5283590768744054921, guid: 792a48229d3967b4094c7ef2b8d01d89,
+        type: 3}
+      propertyPath: tilemap
+      value: 
+      objectReference: {fileID: 200653926}
+    - target: {fileID: 5283590768744054921, guid: 792a48229d3967b4094c7ef2b8d01d89,
+        type: 3}
+      propertyPath: tile
+      value: 
+      objectReference: {fileID: 11400000, guid: 837cee22b2462ab4fa99792972de5c8d,
+        type: 2}
+    - target: {fileID: 5283590768744054921, guid: 792a48229d3967b4094c7ef2b8d01d89,
+        type: 3}
+      propertyPath: position.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5283590768744054921, guid: 792a48229d3967b4094c7ef2b8d01d89,
+        type: 3}
+      propertyPath: position.y
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5983692903227858910, guid: 792a48229d3967b4094c7ef2b8d01d89,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -5641,6 +5693,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7274852354038626681, guid: 792a48229d3967b4094c7ef2b8d01d89,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 477348356}
+    - target: {fileID: 7274852354038626681, guid: 792a48229d3967b4094c7ef2b8d01d89,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadSceneByName
       objectReference: {fileID: 0}
     - target: {fileID: 7274852354410414294, guid: 792a48229d3967b4094c7ef2b8d01d89,
         type: 3}
@@ -5776,6 +5838,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9089988284916344485, guid: 792a48229d3967b4094c7ef2b8d01d89,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 792a48229d3967b4094c7ef2b8d01d89, type: 3}

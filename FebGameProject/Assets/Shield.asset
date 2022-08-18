@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea4e416af5047e4fbf026e64e3722e6, type: 3}
   m_Name: Shield
   m_EditorClassIdentifier: 
+  type: Block
   name: Shield
   desc: Protect!
   damage: 2
@@ -20,3 +21,4 @@ MonoBehaviour:
   droppedItem: {fileID: 3919512440443937417, guid: 15a426d0dc7721c439b25608dd6bbea4,
     type: 3}
   bullet: {fileID: 828820529706863404, guid: fe86a2d3d950c234b9c54bf38d08b822, type: 3}
+  tile: {fileID: 11400000, guid: d303f195d04d02f4d88f4e03cbb4d258, type: 2}

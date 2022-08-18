@@ -16,13 +16,14 @@ public class PlayerInventory : MonoBehaviour
     public int maxSlots = 3;
     public int takenSlots = 0;
     public GameObject inventoryUI;
-
+    private BuildManager buildManager;
 
     public GameObject slotsContainer;
 
     // Start is called before the first frame update
     void Start()
     {
+        buildManager = GetComponent<BuildManager>();
         slotsContainer.GetComponent<Inventory>().Initialize();
         inventoryUI.SetActive(false);
     }
@@ -158,7 +159,20 @@ public class PlayerInventory : MonoBehaviour
 
         slotsContainer.GetComponent<Inventory>().selectedIndex = i;
         slotsContainer.GetComponent<Inventory>().HighlightSelectedIndex();
-        spriteRenderer.sprite = slotsContainer.GetComponent<Inventory>().slots[i].GetComponent<InventoryBox>().currentItem.itemSprite;
+        spriteRenderer.sprite = GetCurrentItem().itemSprite;
+        if(GetCurrentItem().type == "Block")
+        {
+            buildManager.Activate(GetCurrentItem());
+        }
+        else
+        {
+            buildManager.DeActivate();
+        }
+    }
+
+    public Item GetCurrentItem()
+    {
+        return slotsContainer.GetComponent<Inventory>().slots[slotsContainer.GetComponent<Inventory>().selectedIndex].GetComponent<InventoryBox>().currentItem;
     }
 
 }

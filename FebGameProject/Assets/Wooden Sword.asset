@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea4e416af5047e4fbf026e64e3722e6, type: 3}
   m_Name: Wooden Sword
   m_EditorClassIdentifier: 
+  type: Block
   name: Wooden Sword
   desc: it sucks
   damage: 10
@@ -20,3 +21,4 @@ MonoBehaviour:
   droppedItem: {fileID: 4518776643282201321, guid: 0a302e780dbc34b4d82a1074354ab275,
     type: 3}
   bullet: {fileID: 981283254353661800, guid: c96b6e9f02b05584aa6be453bd7362ab, type: 3}
+  tile: {fileID: 11400000, guid: ae74e959e52feeb4c9eaaa8d060196df, type: 2}

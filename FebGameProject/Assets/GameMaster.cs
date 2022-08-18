@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameMaster : MonoBehaviour
 {
@@ -18,5 +19,13 @@ public class GameMaster : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    // used by pause menu
+    public void LoadSceneByName(string sceneName)
+    {
+        Time.timeScale = 1.0f;
+        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+        Destroy(gameObject);
     }
 }
