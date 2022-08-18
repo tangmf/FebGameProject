@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ea4e416af5047e4fbf026e64e3722e6, type: 3}
-  m_Name: Wooden Sword
+  m_Name: Grass
   m_EditorClassIdentifier: 
   type: Block
-  name: Wooden Sword
-  desc: it sucks
+  name: Grass
+  desc: The most common block
   damage: 10
   defence: 1
-  itemSprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  itemSprite: {fileID: 21300000, guid: b577a4eb7d16ee845840a351154b7aeb, type: 3}
   droppedItem: {fileID: 4518776643282201321, guid: 0a302e780dbc34b4d82a1074354ab275,
     type: 3}
   bullet: {fileID: 981283254353661800, guid: c96b6e9f02b05584aa6be453bd7362ab, type: 3}
-  tile: {fileID: 11400000, guid: ae74e959e52feeb4c9eaaa8d060196df, type: 2}
+  tile: {fileID: 11400000, guid: 837cee22b2462ab4fa99792972de5c8d, type: 2}

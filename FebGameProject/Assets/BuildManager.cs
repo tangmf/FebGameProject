@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BuildManager : MonoBehaviour
 {
-    private PlayerInventory playerInventory;
+    public PlayerInventory playerInventory;
     public GameObject tilePainter;
 
     // Start is called before the first frame update
@@ -29,7 +29,14 @@ public class BuildManager : MonoBehaviour
 
     public void DeActivate()
     {
-        tilePainter.SetActive(false);
+        Debug.Log("Building disabled");
         tilePainter.GetComponent<TilePainter>().AssignItem(null);
+        tilePainter.SetActive(false);
+        
+    }
+
+    public void TilePainted()
+    {
+        playerInventory.UseCurrentItem();
     }
 }

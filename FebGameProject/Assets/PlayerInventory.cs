@@ -67,12 +67,30 @@ public class PlayerInventory : MonoBehaviour
             
             
         }
+
+        if (Input.GetButtonDown("Fire1"))
+        {
+            if(GetCurrentItem() != null)
+            {
+                if (GetCurrentItem().type == "Block")
+                {
+                    UseCurrentItem();
+                    buildManager.Activate(GetCurrentItem());
+                }
+
+
+                UpdateBuildManager();
+            }
+
+
+        }
     }
 
     public void AddItem(Item item)
     {
 
         AddItemToInventory(item, 1);
+        UpdateBuildManager();
         
     }
 
@@ -85,6 +103,8 @@ public class PlayerInventory : MonoBehaviour
         RemoveItemFromInventory(item, 1);
 
         Instantiate(item.droppedItem, handPos.position, handPos.rotation);
+
+        UpdateBuildManager();
 
     }
 
@@ -142,7 +162,7 @@ public class PlayerInventory : MonoBehaviour
                 }
                 else
                 {
-                    slotObject.RemoveItem(item, qty);
+                    slotObject.RemoveItem(item);
                     spriteRenderer.sprite = null;
                 }
                 
@@ -158,16 +178,8 @@ public class PlayerInventory : MonoBehaviour
 
 
         slotsContainer.GetComponent<Inventory>().selectedIndex = i;
-        slotsContainer.GetComponent<Inventory>().HighlightSelectedIndex();
-        spriteRenderer.sprite = GetCurrentItem().itemSprite;
-        if(GetCurrentItem().type == "Block")
-        {
-            buildManager.Activate(GetCurrentItem());
-        }
-        else
-        {
-            buildManager.DeActivate();
-        }
+        
+        UpdateBuildManager();
     }
 
     public Item GetCurrentItem()
@@ -175,4 +187,71 @@ public class PlayerInventory : MonoBehaviour
         return slotsContainer.GetComponent<Inventory>().slots[slotsContainer.GetComponent<Inventory>().selectedIndex].GetComponent<InventoryBox>().currentItem;
     }
 
+    public void UseCurrentItem()
+    {
+        int itemQty = int.Parse(GetCurrentItemSlot().quantity.text.ToString());
+        if (itemQty <= 0)
+        {
+            // No items
+            if(GetCurrentItem().type == "Block")
+            {
+
+            }
+            
+        }
+        else
+        {
+            // Use
+            if (GetCurrentItem().type == "Block")
+            {
+                if (buildManager.tilePainter.GetComponent<TilePainter>().PaintTileInstant())
+                {
+                    // Remove from inventory
+                    RemoveItemFromInventory(GetCurrentItem(), 1);
+                }
+                    
+            }
+            
+            UpdateBuildManager();
+        }
+        
+    }
+
+    public InventoryBox GetCurrentItemSlot()
+    {
+        return slotsContainer.GetComponent<Inventory>().slots[slotsContainer.GetComponent<Inventory>().selectedIndex].GetComponent<InventoryBox>();
+    }
+
+    public void UpdateBuildManager()
+    {
+        slotsContainer.GetComponent<Inventory>().HighlightSelectedIndex();
+        if (GetCurrentItem() != null)
+        {
+            spriteRenderer.sprite = GetCurrentItem().itemSprite;
+        }
+        else
+        {
+            spriteRenderer.sprite = null;
+        }
+
+        int itemQty = int.Parse(GetCurrentItemSlot().quantity.text.ToString());
+        if (itemQty != 0)
+        {
+            if (GetCurrentItem().type == "Block")
+            {
+                buildManager.Activate(GetCurrentItem());
+            }
+            else
+            {
+                buildManager.DeActivate();
+            }
+        }
+        else
+        {
+            buildManager.DeActivate();
+        }
+        buildManager.tilePainter.GetComponent<TilePainter>().ResetPreview();
+
+
+    }
 }

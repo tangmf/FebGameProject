@@ -8,6 +8,12 @@ public class TilePainter : MonoBehaviour
     public Tile tile;
     public Vector3Int position;
     public Tilemap tilemap;
+    public Tilemap preview;
+
+    private Vector3Int currentPosition;
+    private Vector3Int previousPosition;
+
+    public GameObject buildManager;
 
     void Update()
     {
@@ -20,30 +26,122 @@ public class TilePainter : MonoBehaviour
             tilemap.SetTile(Vector3Int.FloorToInt(tilemap.GetCellCenterLocal(tilemap.WorldToCell(position))), tile);
         }
         */
-        if(tile != null)
+        if (tile != null)
         {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             position = tilemap.WorldToCell(mousePos);
 
+            if (position != previousPosition)
+            {
+                if (tilemap.GetTile(position) == null)
+                {
+                    currentPosition = position;
+                    preview.color = Color.green;
+                    PaintTile(preview, currentPosition, tile);
+                    PaintTile(preview, previousPosition, null);
+
+                }
+                else
+                {
+                    Vector3Int temp = currentPosition;
+                    currentPosition = position;
+                    preview.color = Color.red;
+                    PaintTile(preview, currentPosition, tile);
+                    PaintTile(preview, previousPosition, null);
+                    currentPosition = temp;
+                }
+
+
+
+                previousPosition = position;
+            }
+
+
+
+            /*
             if (Input.GetKeyDown("g"))
             {
                 position.z = 0;
                 //PaintTile(Vector3Int.FloorToInt(worldPosition), tile);
-                tilemap.SetTile(position, tile);
+                if(int.Parse(buildManager.GetComponent<BuildManager>().playerInventory.GetCurrentItemSlot().quantity.ToString()) > 0)
+                {
+                    PaintTile(position, tile);
+                }
+                
             }
+            */
         }
     }
-    public void PaintTile(Vector3Int pos, Tile tile)
+    public void PaintTile(Tilemap tilemap, Vector3Int pos, Tile tile)
     {
+        pos.z = 0;
         tilemap.SetTile(pos, tile);
+    }
+
+    public bool PaintTileInstant()
+    {
+        if (tilemap.GetTile(position) == null)
+        {
+            PaintTile(preview, previousPosition, null);
+            position.z = 0;
+            tilemap.SetTile(position, tile);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
     }
 
     public void AssignItem(Item item)
     {
-        if(item != null)
+        if (item != null)
         {
             tile = item.tile;
         }
-        
+        else
+        {
+            tile = null;
+        }
+
     }
+
+    public void ResetPreview()
+    {
+        //preview.ClearAllTiles();
+        preview.ClearAllTiles();
+        if (preview.GetTile(position) != null)
+        {
+            if (tilemap.GetTile(position) == null)
+            {
+                preview.color = Color.green;
+                PaintTile(preview, position, tile);
+            }
+            else
+            {
+                preview.color = Color.red;
+                PaintTile(preview, position, tile);
+            }
+                
+        }
+        else
+        {
+            if (tilemap.GetTile(position) == null)
+            {
+                preview.color = Color.green;
+                currentPosition = position;
+                PaintTile(preview, currentPosition, tile);
+                previousPosition = position;
+            }
+            else
+            {
+                preview.color = Color.red;
+                PaintTile(preview, position, tile);
+            }
+
+        }
+    }
+
+
 }

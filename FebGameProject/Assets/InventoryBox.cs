@@ -37,7 +37,7 @@ public class InventoryBox : MonoBehaviour
         int originalqty = int.Parse(quantity.text);
         quantity.text = (originalqty + qty).ToString();
     }
-    public void RemoveItem(Item item, int qty)
+    public void RemoveItem(Item item)
     {
         currentItem = null;
         displayImage.GetComponent<Image>().sprite = null;
