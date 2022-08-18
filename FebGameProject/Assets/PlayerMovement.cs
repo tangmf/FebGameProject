@@ -76,23 +76,6 @@ public class PlayerMovement : MonoBehaviour
 
         }
 
-        if (Input.GetKeyDown("escape"))
-        {
-            if (PauseMenu.activeSelf)
-            {
-                PauseMenu.SetActive(false);
-                Debug.Log("Menu closed");
-                Time.timeScale = 1.0f;
-            }
-            else
-            {
-                PauseMenu.SetActive(true);
-                Debug.Log("Menu opened");
-                Time.timeScale = 0.0f;
-            }
-
-
-        }
 
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
@@ -106,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
         bool Moving = Input.GetKey("left") || Input.GetKey("a") || Input.GetKey("right") || Input.GetKey("d");
         animator.SetBool("Moving", Moving);
 
-        bool Grounded = isGrounded;
+        bool Grounded = IsGrounded();
         animator.SetBool("Grounded", Grounded);
 
         
