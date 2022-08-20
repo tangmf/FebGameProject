@@ -23,6 +23,18 @@ public class WeaponPickUp : MonoBehaviour
         if (hitInfo.gameObject.CompareTag("Player"))
         {
             PlayerInventory playerInventory = hitInfo.GetComponent<PlayerInventory>();
+
+            if (playerInventory.CanTakeItem(item))
+            {
+                Destroy(gameObject);
+                Debug.Log(item.name + " Picked up");
+                playerInventory.AddItem(item);
+            }
+            else
+            {
+                Debug.Log("Inventory full");
+            }
+            /*
             if (playerInventory != null)
             {
                 if(playerInventory.takenSlots < playerInventory.maxSlots)
@@ -38,6 +50,7 @@ public class WeaponPickUp : MonoBehaviour
                 
 
             }
+            */
             
         }
     }

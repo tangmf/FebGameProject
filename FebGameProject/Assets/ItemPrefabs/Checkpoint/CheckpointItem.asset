@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ea4e416af5047e4fbf026e64e3722e6, type: 3}
+  m_Name: CheckpointItem
+  m_EditorClassIdentifier: 
+  type: Block
+  name: Checkpoint
+  desc: 
+  damage: 0
+  defence: 0
+  maxStack: 200
+  itemSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  droppedItem: {fileID: 2745239141145732097, guid: 2e370729d45616640a28c58423bcdec8,
+    type: 3}
+  bullet: {fileID: 0}
+  tileObject: {fileID: 1509363431303465230, guid: 80a01d5643913f745891f9791f28886c,
+    type: 3}

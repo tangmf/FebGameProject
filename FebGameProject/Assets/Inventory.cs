@@ -6,6 +6,7 @@ public class Inventory : MonoBehaviour
 {
     public List<GameObject> slots;
     public int selectedIndex;
+    public int totalSlots;
 
     // Start is called before the first frame update
     void Start()
@@ -45,5 +46,20 @@ public class Inventory : MonoBehaviour
             slots.Add(slot.gameObject);
             Debug.Log("Slot loaded " + slots.Count.ToString());
         }
+        totalSlots = slots.Count;
+    }
+
+    public int GetTakenSlots()
+    {
+        int count = 0;
+        foreach (GameObject slot in slots)
+        {
+            if(slot.GetComponent<InventoryBox>().currentItem != null)
+            {
+                count++;
+            }
+        }
+        Debug.Log("Slots taken: " + count.ToString());
+        return count;
     }
 }

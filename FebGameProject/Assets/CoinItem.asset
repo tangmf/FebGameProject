@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ea4e416af5047e4fbf026e64e3722e6, type: 3}
-  m_Name: Shield
+  m_Name: CoinItem
   m_EditorClassIdentifier: 
   type: Block
-  name: Shield
+  name: Coin
   desc: Protect!
   damage: 2
   defence: 10
+  maxStack: 5
   itemSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   droppedItem: {fileID: 3919512440443937417, guid: 15a426d0dc7721c439b25608dd6bbea4,
     type: 3}
   bullet: {fileID: 828820529706863404, guid: fe86a2d3d950c234b9c54bf38d08b822, type: 3}
-  tile: {fileID: 0}
   tileObject: {fileID: 4510955171363270316, guid: b999143a50a5895469d03170b20ff2ec,
     type: 3}

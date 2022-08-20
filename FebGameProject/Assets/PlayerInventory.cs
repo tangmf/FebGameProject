@@ -19,12 +19,15 @@ public class PlayerInventory : MonoBehaviour
     private BuildManager buildManager;
 
     public GameObject slotsContainer;
+    public LayerMask breakableLayers;
 
     // Start is called before the first frame update
     void Start()
     {
         buildManager = GetComponent<BuildManager>();
         slotsContainer.GetComponent<Inventory>().Initialize();
+        maxSlots = slotsContainer.GetComponent<Inventory>().totalSlots;
+        //UpdateBuildManager();
         inventoryUI.SetActive(false);
     }
 
@@ -33,15 +36,15 @@ public class PlayerInventory : MonoBehaviour
     {
         
 
-        if (Input.GetKey("1"))
+        if (Input.GetKeyDown("1"))
         {
             SwapSlot(0);
         }
-        else if (Input.GetKey("2"))
+        else if (Input.GetKeyDown("2"))
         {
             SwapSlot(1);
         }
-        else if (Input.GetKey("3"))
+        else if (Input.GetKeyDown("3"))
         {
             SwapSlot(2);
         }
@@ -208,6 +211,19 @@ public class PlayerInventory : MonoBehaviour
                 }
                     
             }
+            else if(GetCurrentItem().type == "Breaker")
+            {
+                Debug.Log("Break");
+                Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Collider2D target = Physics2D.OverlapPoint(mousePosition, breakableLayers);
+                if (target)
+                {
+                    Debug.Log("Destroying");
+                    Destroy(target.transform.gameObject);
+                }
+
+
+            }
             else if(GetCurrentItem().type == "Bullet")
             {
                 Debug.Log("SHOOT");
@@ -227,6 +243,7 @@ public class PlayerInventory : MonoBehaviour
 
     public void UpdateBuildManager()
     {
+        takenSlots = slotsContainer.GetComponent<Inventory>().GetTakenSlots();
         slotsContainer.GetComponent<Inventory>().HighlightSelectedIndex();
         if (GetCurrentItem() != null)
         {
@@ -258,20 +275,27 @@ public class PlayerInventory : MonoBehaviour
 
     }
 
-    public int GetTakenSlots()
+    public bool CanTakeItem(Item item)
     {
-        List<GameObject> slotList = slotsContainer.GetComponent<Inventory>().slots;
-        int count = 0;
-        foreach (GameObject slot in slotList)
+        if(takenSlots < maxSlots)
         {
-            InventoryBox slotObject = slot.GetComponent<InventoryBox>();
-            if (slotObject.currentItem != null)
-            {
-                count++;
-            }
-
+            return true;
         }
-        Debug.Log("NUMVER: " + count.ToString());
-        return count;
+        else
+        {
+            List<GameObject> slotList = slotsContainer.GetComponent<Inventory>().slots;
+            foreach (GameObject slot in slotList)
+            {
+                InventoryBox slotObject = slot.GetComponent<InventoryBox>();
+                int quantity = int.Parse(slotObject.quantity.text.ToString());
+                if (slotObject.currentItem == item && quantity < item.maxStack)
+                {
+                    return true;
+                }
+
+            }
+        }
+        
+        return false;
     }
 }
