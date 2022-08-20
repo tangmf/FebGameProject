@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
 
 public class TilePainter : MonoBehaviour
 {
-    public Tile tile;
+    public Item item;
     public Vector3Int position;
     public Tilemap tilemap;
     public Tilemap preview;
@@ -19,6 +19,9 @@ public class TilePainter : MonoBehaviour
     public Vector3Int playerPos;
 
     public int range = 4;
+
+    public LayerMask layersToCheck;
+    Collider2D _targetCollider;
     void Update()
     {
         /*
@@ -30,7 +33,7 @@ public class TilePainter : MonoBehaviour
             tilemap.SetTile(Vector3Int.FloorToInt(tilemap.GetCellCenterLocal(tilemap.WorldToCell(position))), tile);
         }
         */
-        if (tile != null)
+        if (item.tileObject != null)
         {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             position = tilemap.WorldToCell(mousePos);
@@ -61,7 +64,9 @@ public class TilePainter : MonoBehaviour
 
             if (position != previousPosition)
             {
-                if (tilemap.GetTile(position) == null)
+                Tile tile = ScriptableObject.CreateInstance<Tile>();
+                tile.sprite = item.tileObject.GetComponent<SpriteRenderer>().sprite;
+                if (!TileOccupied(position))
                 {
                     currentPosition = position;
                     preview.color = Color.green;
@@ -108,11 +113,12 @@ public class TilePainter : MonoBehaviour
 
     public bool PaintTileInstant()
     {
-        if (tilemap.GetTile(position) == null)
+        if(!TileOccupied(position))
         {
-            PaintTile(preview, previousPosition, null);
-            position.z = 0;
-            tilemap.SetTile(position, tile);
+            if(item.tileObject != null)
+            {
+                Instantiate(item.tileObject, tilemap.GetCellCenterWorld(position), transform.rotation);
+            }
             return true;
         }
         else
@@ -122,26 +128,28 @@ public class TilePainter : MonoBehaviour
 
     }
 
-    public void AssignItem(Item item)
+    public void AssignItem(Item i)
     {
-        if (item != null)
+        if (i != null)
         {
-            tile = item.tile;
+            item = i;
         }
         else
         {
-            tile = null;
+            item = null;
         }
 
     }
 
     public void ResetPreview()
     {
+        Tile tile = ScriptableObject.CreateInstance<Tile>();
+        tile.sprite = item.tileObject.GetComponent<SpriteRenderer>().sprite;
         //preview.ClearAllTiles();
         preview.ClearAllTiles();
         if (preview.GetTile(position) != null)
         {
-            if (tilemap.GetTile(position) == null)
+            if (!TileOccupied(position))
             {
                 preview.color = Color.green;
                 PaintTile(preview, position, tile);
@@ -155,7 +163,7 @@ public class TilePainter : MonoBehaviour
         }
         else
         {
-            if (tilemap.GetTile(position) == null)
+            if (!TileOccupied(position))
             {
                 preview.color = Color.green;
                 currentPosition = position;
@@ -168,6 +176,19 @@ public class TilePainter : MonoBehaviour
                 PaintTile(preview, position, tile);
             }
 
+        }
+    }
+
+    public bool TileOccupied(Vector3Int gridPos)
+    {
+        _targetCollider = Physics2D.OverlapPoint(tilemap.GetCellCenterWorld(gridPos), layersToCheck);
+        if(_targetCollider == null)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
         }
     }
 

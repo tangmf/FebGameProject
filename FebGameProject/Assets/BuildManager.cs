@@ -31,6 +31,7 @@ public class BuildManager : MonoBehaviour
     {
         Debug.Log("Building disabled");
         tilePainter.GetComponent<TilePainter>().AssignItem(null);
+        tilePainter.GetComponent<TilePainter>().preview.ClearAllTiles();
         tilePainter.SetActive(false);
         
     }

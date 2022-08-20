@@ -15,4 +15,5 @@ public class Item : ScriptableObject
     public GameObject droppedItem;
     public GameObject bullet;
     public Tile tile;
+    public GameObject tileObject;
 }

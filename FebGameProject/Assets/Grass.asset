@@ -21,4 +21,6 @@ MonoBehaviour:
   droppedItem: {fileID: 4518776643282201321, guid: 0a302e780dbc34b4d82a1074354ab275,
     type: 3}
   bullet: {fileID: 981283254353661800, guid: c96b6e9f02b05584aa6be453bd7362ab, type: 3}
-  tile: {fileID: 11400000, guid: 837cee22b2462ab4fa99792972de5c8d, type: 2}
+  tile: {fileID: 0}
+  tileObject: {fileID: 1639764188717343981, guid: f039736f9a5277d4b919878081036581,
+    type: 3}

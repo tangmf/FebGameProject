@@ -44,7 +44,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.025680184, y: -0.013141189}
+  m_Offset: {x: -0.01294592, y: -0.025403667}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -55,22 +55,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.119535446, y: 0.19001853}
+  m_Size: {x: 0.13831657, y: 0.18995515}
   m_EdgeRadius: 0
---- !u!114 &4198632552821270197
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6953559442181331938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e5ae781ee412684bb033269f6cdf434, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  icon: {fileID: 0}
-  interactManagerObject: {fileID: 9011260695847800511}
 --- !u!114 &1013350229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,6 +71,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInventory: {fileID: 8664921658936358193}
   tilePainter: {fileID: 9193264154586217797}
+--- !u!114 &4198632552821270197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6953559442181331938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e5ae781ee412684bb033269f6cdf434, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 0}
+  interactManagerObject: {fileID: 9011260695847800511}
 --- !u!114 &1563748646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,33 +100,6 @@ MonoBehaviour:
   defaultValue: 1
   min: 0.5
   max: 5
---- !u!114 &1974121828796464500
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4755628862814554662}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
-  m_LookaheadTime: 0
-  m_LookaheadSmoothing: 0
-  m_LookaheadIgnoreY: 0
-  m_HorizontalDamping: 0.5
-  m_VerticalDamping: 0.5
-  m_ScreenX: 0.5
-  m_ScreenY: 0.5
-  m_DeadZoneWidth: 0
-  m_DeadZoneHeight: 0
-  m_SoftZoneWidth: 0.8
-  m_SoftZoneHeight: 0.8
-  m_BiasX: 0
-  m_BiasY: 0
-  m_CenterOnActivate: 1
 --- !u!114 &1974121828796464499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,6 +143,33 @@ MonoBehaviour:
   m_MaximumFOV: 60
   m_MinimumOrthoSize: 1
   m_MaximumOrthoSize: 5000
+--- !u!114 &1974121828796464500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4755628862814554662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
+  m_LookaheadTime: 0
+  m_LookaheadSmoothing: 0
+  m_LookaheadIgnoreY: 0
+  m_HorizontalDamping: 0.5
+  m_VerticalDamping: 0.5
+  m_ScreenX: 0.5
+  m_ScreenY: 0.5
+  m_DeadZoneWidth: 0
+  m_DeadZoneHeight: 0
+  m_SoftZoneWidth: 0.8
+  m_SoftZoneHeight: 0.8
+  m_BiasX: 0
+  m_BiasY: 0
+  m_CenterOnActivate: 1
 --- !u!1 &9011260695847800511
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,7 +295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df93dbf67586c3b42baba3155714b108, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tile: {fileID: 11400000, guid: 837cee22b2462ab4fa99792972de5c8d, type: 2}
+  item: {fileID: 0}
   position: {x: 2, y: 2, z: 0}
   tilemap: {fileID: 0}
   preview: {fileID: 0}
@@ -303,6 +303,9 @@ MonoBehaviour:
   player: {fileID: 8093092696967087906}
   playerPos: {x: 0, y: 0, z: 0}
   range: 4
+  layersToCheck:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!212 &1401111022
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -645,6 +648,11 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 0.015386581
       objectReference: {fileID: 0}
+    - target: {fileID: 6840801591706246661, guid: 8fbf29dc00aabc742ae6ad4539bea2af,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8285342398625694111, guid: 8fbf29dc00aabc742ae6ad4539bea2af,
         type: 3}
       propertyPath: jumpForce
@@ -918,7 +926,7 @@ PrefabInstance:
     - target: {fileID: 9191858883652518753, guid: 8fbf29dc00aabc742ae6ad4539bea2af,
         type: 3}
       propertyPath: m_Name
-      value: GameMaster
+      value: GMv2
       objectReference: {fileID: 0}
     - target: {fileID: 9191858883879121763, guid: 8fbf29dc00aabc742ae6ad4539bea2af,
         type: 3}
@@ -963,7 +971,7 @@ PrefabInstance:
     - target: {fileID: 9191858883903189769, guid: 8fbf29dc00aabc742ae6ad4539bea2af,
         type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.8481013
+      value: 1.7804878
       objectReference: {fileID: 0}
     - target: {fileID: 9191858883903189769, guid: 8fbf29dc00aabc742ae6ad4539bea2af,
         type: 3}
