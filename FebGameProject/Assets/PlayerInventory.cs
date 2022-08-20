@@ -72,11 +72,10 @@ public class PlayerInventory : MonoBehaviour
         {
             if(GetCurrentItem() != null)
             {
-                if (GetCurrentItem().type == "Block")
-                {
+
                     UseCurrentItem();
                     buildManager.Activate(GetCurrentItem());
-                }
+
 
 
                 UpdateBuildManager();
@@ -121,7 +120,8 @@ public class PlayerInventory : MonoBehaviour
         foreach (GameObject slot in slotList)
         {
             InventoryBox slotObject = slot.GetComponent<InventoryBox>();
-            if (slotObject.currentItem == item)
+            int quantity = int.Parse(slotObject.quantity.text.ToString());
+            if (slotObject.currentItem == item && quantity < item.maxStack)
             {
                 slotObject.AddItemStack(item, qty);
                 continue1 = false;
@@ -192,11 +192,7 @@ public class PlayerInventory : MonoBehaviour
         int itemQty = int.Parse(GetCurrentItemSlot().quantity.text.ToString());
         if (itemQty <= 0)
         {
-            // No items
-            if(GetCurrentItem().type == "Block")
-            {
 
-            }
             
         }
         else
@@ -204,12 +200,19 @@ public class PlayerInventory : MonoBehaviour
             // Use
             if (GetCurrentItem().type == "Block")
             {
+                buildManager.Activate(GetCurrentItem());
                 if (buildManager.tilePainter.GetComponent<TilePainter>().PaintTileInstant())
                 {
                     // Remove from inventory
                     RemoveItemFromInventory(GetCurrentItem(), 1);
                 }
                     
+            }
+            else if(GetCurrentItem().type == "Bullet")
+            {
+                Debug.Log("SHOOT");
+                GameObject newBullet = (GameObject)Instantiate(GetCurrentItem().bullet, attackPos.position, attackPos.rotation);
+                Destroy(newBullet, 2f);
             }
             
             UpdateBuildManager();
@@ -253,5 +256,22 @@ public class PlayerInventory : MonoBehaviour
         buildManager.tilePainter.GetComponent<TilePainter>().ResetPreview();
 
 
+    }
+
+    public int GetTakenSlots()
+    {
+        List<GameObject> slotList = slotsContainer.GetComponent<Inventory>().slots;
+        int count = 0;
+        foreach (GameObject slot in slotList)
+        {
+            InventoryBox slotObject = slot.GetComponent<InventoryBox>();
+            if (slotObject.currentItem != null)
+            {
+                count++;
+            }
+
+        }
+        Debug.Log("NUMVER: " + count.ToString());
+        return count;
     }
 }

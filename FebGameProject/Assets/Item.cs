@@ -11,9 +11,9 @@ public class Item : ScriptableObject
     public string desc;
     public int damage;
     public int defence;
+    public int maxStack;
     public Sprite itemSprite;
     public GameObject droppedItem;
     public GameObject bullet;
-    public Tile tile;
     public GameObject tileObject;
 }

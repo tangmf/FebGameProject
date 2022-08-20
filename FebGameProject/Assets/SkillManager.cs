@@ -56,7 +56,7 @@ public class SkillManager : MonoBehaviour
                 SwapSlot(slotIndex);
             }
         }
-
+        /*
         if (Input.GetButtonDown("Fire1"))
         {
 
@@ -81,6 +81,7 @@ public class SkillManager : MonoBehaviour
 
 
         }
+        */
     }
 
         public void CastSkill(Skills skill)

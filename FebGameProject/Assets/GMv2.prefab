@@ -56,7 +56,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 0.13831657, y: 0.18995515}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 0.01
 --- !u!114 &1013350229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -648,6 +648,11 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 0.015386581
       objectReference: {fileID: 0}
+    - target: {fileID: 6084699373358128607, guid: 8fbf29dc00aabc742ae6ad4539bea2af,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6840801591706246661, guid: 8fbf29dc00aabc742ae6ad4539bea2af,
         type: 3}
       propertyPath: m_Layer
@@ -662,7 +667,7 @@ PrefabInstance:
         type: 3}
       propertyPath: groundCheck
       value: 
-      objectReference: {fileID: 8377139507229986818}
+      objectReference: {fileID: 6953559442181331938}
     - target: {fileID: 8285342398625694111, guid: 8fbf29dc00aabc742ae6ad4539bea2af,
         type: 3}
       propertyPath: jumpableGround.m_Bits
