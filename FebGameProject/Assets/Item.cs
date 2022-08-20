@@ -16,4 +16,6 @@ public class Item : ScriptableObject
     public GameObject droppedItem;
     public GameObject bullet;
     public GameObject tileObject;
+    public bool canDrop = true;
+    public bool canBreak = true;
 }

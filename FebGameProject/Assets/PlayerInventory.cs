@@ -21,6 +21,8 @@ public class PlayerInventory : MonoBehaviour
     public GameObject slotsContainer;
     public LayerMask breakableLayers;
 
+    public Item fist;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +30,9 @@ public class PlayerInventory : MonoBehaviour
         slotsContainer.GetComponent<Inventory>().Initialize();
         maxSlots = slotsContainer.GetComponent<Inventory>().totalSlots;
         //UpdateBuildManager();
+        AddItem(fist);
         inventoryUI.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -101,12 +105,15 @@ public class PlayerInventory : MonoBehaviour
 
     public void DropCurrentItem()
     {
-        Item item = slotsContainer.GetComponent<Inventory>().slots[slotsContainer.GetComponent<Inventory>().selectedIndex].GetComponent<InventoryBox>().currentItem;
-        RemoveItemFromInventory(item, 1);
+        Item item = GetCurrentItem();
+        if (item.canDrop)
+        {
+            RemoveItemFromInventory(item, 1);
 
-        Instantiate(item.droppedItem, handPos.position, handPos.rotation);
+            Instantiate(item.droppedItem, handPos.position, handPos.rotation);
 
-        UpdateBuildManager();
+            UpdateBuildManager();
+        }
 
     }
 
@@ -218,8 +225,10 @@ public class PlayerInventory : MonoBehaviour
                 Collider2D target = Physics2D.OverlapPoint(mousePosition, breakableLayers);
                 if (target)
                 {
-                    Debug.Log("Destroying");
-                    Destroy(target.transform.gameObject);
+                    if (target.GetComponent<Block>())
+                    {
+                        target.GetComponent<Block>().BreakBlock();
+                    }
                 }
 
 

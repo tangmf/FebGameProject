@@ -13,12 +13,14 @@ public class EnemyAI : MonoBehaviour
     private float nextActionTime = 0.0f;
     public float period = 1f;
     public GameObject bulletPrefab;
+    public GameObject alertIcon;
     // Start is called before the first frame update
     void Start()
     {
         animator = entity.gameObject.GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
         spriteRenderer = entity.gameObject.GetComponent<SpriteRenderer>();
+        alertIcon.SetActive(false);
     }
 
 
@@ -40,8 +42,7 @@ public class EnemyAI : MonoBehaviour
         {
             animator.SetBool("PlayerDetect", true);
             playerDetect = true;
-            FollowPlayer targetPlayer = entity.GetComponent<FollowPlayer>();
-            targetPlayer.TargetPlayer();
+            alertIcon.SetActive(true);
 
         }
 
@@ -53,6 +54,7 @@ public class EnemyAI : MonoBehaviour
         {
             animator.SetBool("PlayerDetect", false);
             playerDetect = false;
+            alertIcon.SetActive(false);
         }
 
     }

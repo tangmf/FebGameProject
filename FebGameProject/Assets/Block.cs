@@ -17,8 +17,13 @@ public class Block : MonoBehaviour
 
     }
 
-    void OnDestroy()
+    public void BreakBlock()
     {
-        Instantiate(item.droppedItem, transform.position, transform.rotation);
+        if (item.canBreak)
+        {
+            Destroy(gameObject);
+            Instantiate(item.droppedItem, transform.position, transform.rotation);
+        }
     }
+
 }

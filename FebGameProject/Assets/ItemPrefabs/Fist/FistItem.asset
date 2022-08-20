@@ -17,9 +17,10 @@ MonoBehaviour:
   desc: 
   damage: 0
   defence: 0
-  maxStack: 0
+  maxStack: 1
   itemSprite: {fileID: 21300000, guid: 867638d991d5b2a44940fda3f89295a3, type: 3}
   droppedItem: {fileID: 8310917410609874552, guid: d0f7b1134ba69274d84e386a76eeb836,
     type: 3}
   bullet: {fileID: 0}
   tileObject: {fileID: 0}
+  canDrop: 0
